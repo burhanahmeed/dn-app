@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+
 	<title><?= $title ?></title>
 	<!-- bootstrap/library css -->
 	<link rel="stylesheet" type="text/css" href="<?= base_url()?>aset/css/bootstrap.min.css">

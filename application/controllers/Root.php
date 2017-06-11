@@ -45,20 +45,19 @@ class Root extends CI_Controller {
 			$bisplan = $this->Competisi_model->getTim('bisplan_db',$lid,$fields);
 			$dataIsi['bisplan'] = $bisplan[0];
 		}elseif ($bp==0 && $db==1 && $cc==0) {
-			$fields = 'bisplan_db.id, bisplan_db.uid, nama_tim, asal_univ, ketua, nim_ketua, anggota1, nim_a1, anggota2, nim_a2, status.status';
+			$fields = 'debat_db.id, debat_db.uid, nama_tim, asal_univ, ketua, nim_ketua, anggota1, nim_a1, anggota2, nim_a2, status.status';
 			$debat = $this->Competisi_model->getTim('debat_db',$lid,$fields);
 			$dataIsi['debat'] = $debat[0];
 		}elseif ($bp==1 && $db==1 && $cc==0) {
 			$fields = 'bisplan_db.id, bisplan_db.uid, nama_tim, asal_univ, ketua, nim_ketua, anggota1, nim_a1, anggota2, nim_a2, status.status';
-			$fields2 = 'bisplan_db.id, bisplan_db.uid, nama_tim, asal_univ, ketua, nim_ketua, anggota1, nim_a1, anggota2, nim_a2, status.status';
+			$fields2 = 'debat_db.id, debat_db.uid, nama_tim, asal_univ, ketua, nim_ketua, anggota1, nim_a1, anggota2, nim_a2, status.status';
 			$bisplan = $this->Competisi_model->getTim('bisplan_db',$lid,$fields);
 			$debat = $this->Competisi_model->getTim('debat_db',$lid,$fields2);
-			$dataIsi = array(
-				'bisplan'=>$bisplan[0],
-				'debat'=>$debat[0]
-				);
+			$dataIsi['bisplan'] = $bisplan[0];
+				$dataIsi['debat']= $debat[0];
+				
 		}elseif ($bp==0 && $db==0 && $cc==1) {
-			$fields = 'bisplan_db.id, bisplan_db.uid, nama_tim, asal_univ, ketua, nim_ketua, anggota1, nim_a1, anggota2, nim_a2, status.status';
+			$fields = 'cercer_db.id, cercer_db.uid, nama_tim, asal_univ, ketua, nim_ketua, anggota1, nim_a1, anggota2, nim_a2, status.status';
 			$cercer = $this->Competisi_model->getTim('cercer_db',$lid,$fields);
 			$dataIsi['cercer'] = $cercer[0];
 		}
@@ -68,7 +67,7 @@ class Root extends CI_Controller {
 		}else{
 			$this->load->view('peserta/header',$data);
 			if ($bp==0 && $db==0 && $cc==0) {
-				$this->load->view('peserta/lomba');
+				$this->load->view('peserta/lomba',$dataIsi);
 			}else{
 				$this->load->view('peserta/dash',$dataIsi);
 			}			

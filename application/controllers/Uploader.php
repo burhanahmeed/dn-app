@@ -41,13 +41,13 @@ class Uploader extends CI_Controller {
 				
 	        if ( ! $this->upload->do_upload('datadiri')) {
 	           $this->session->set_flashdata('errUp', 'The maximum size is 4MB and ZIP extension. Please Check again'); 
-	           redirect('competition/bisplan') ;
+	           redirect('competition/debat') ;
 	        }				
 	        else { 
 		        $this->session->set_flashdata('succUp', 'File uploaded successfully'); 
 		        $data = array('verifikasi' => $this->upload->data('file_name')); 
 	           $this->Competisi_model->update_lomba($code, 'debat_db',$data);
-	           redirect('competition/bisplan') ;
+	           redirect('competition/debat') ;
 	        } 
     			break;
 
@@ -61,13 +61,13 @@ class Uploader extends CI_Controller {
 				
 	        if ( ! $this->upload->do_upload('datadiri')) {
 	           $this->session->set_flashdata('errUp', 'The maximum size is 4MB and ZIP extension. Please Check again'); 
-	           redirect('competition/bisplan') ;
+	           redirect('competition/cercer') ;
 	        }				
 	        else { 
 		        $this->session->set_flashdata('succUp', 'File uploaded successfully'); 
 		        $data = array('verifikasi' => $this->upload->data('file_name')); 
 	           $this->Competisi_model->update_lomba($code, 'cercer_db',$data);
-	           redirect('competition/bisplan') ;
+	           redirect('competition/cercer') ;
 	        } 
     			break;
     	}
@@ -105,13 +105,13 @@ class Uploader extends CI_Controller {
 				
 	        if ( ! $this->upload->do_upload('bayar')) {
 	           $this->session->set_flashdata('errUp', 'The maximum size is 4MB and JPG/PNG/JPEG extension. Please Check again'); 
-	           redirect('competition/bisplan') ;
+	           redirect('competition/debat') ;
 	        }				
 	        else { 
 		        $this->session->set_flashdata('succUp', 'File uploaded successfully'); 
 		        $data = array('pembayaran' => $this->upload->data('file_name')); 
 	           $this->Competisi_model->update_lomba($code, 'debat_db',$data);
-	           redirect('competition/bisplan') ;
+	           redirect('competition/debat') ;
 	        } 
     			break;
 
@@ -125,13 +125,13 @@ class Uploader extends CI_Controller {
 				
 	        if ( ! $this->upload->do_upload('bayar')) {
 	           $this->session->set_flashdata('errUp', 'The maximum size is 4MB and JPG/PNG/JPEG extension. Please Check again'); 
-	           redirect('competition/bisplan') ;
+	           redirect('competition/cercer') ;
 	        }				
 	        else { 
 		        $this->session->set_flashdata('succUp', 'File uploaded successfully'); 
 		        $data = array('pembayaran' => $this->upload->data('file_name')); 
 	           $this->Competisi_model->update_lomba($code, 'cercer_db',$data);
-	           redirect('competition/bisplan') ;
+	           redirect('competition/cercer') ;
 	        } 
     			break;
     	}
@@ -176,13 +176,17 @@ class Uploader extends CI_Controller {
 				
 	        if ( ! $this->upload->do_upload('bayar')) {
 	           $this->session->set_flashdata('errUp', 'The maximum size is 4MB and JPG/PNG/JPEG extension. Please Check again'); 
-	           redirect('competition/bisplan') ;
+	           redirect('competition/debat') ;
 	        }				
 	        else { 
 		        $this->session->set_flashdata('succUp', 'File uploaded successfully'); 
-		        $data = array('pembayaran' => $this->upload->data('file_name')); 
-	           $this->Competisi_model->update_lomba($code, 'debat_db',$data);
-	           redirect('competition/bisplan') ;
+		        $data = array(
+		        	'path' => 'uploads/submit_debat/'.$this->upload->data('file_name'),
+		        	'kode'=>$code,
+		        	'jenis_event'=> 'debat',
+		        	'timestamp'=>date('Y-m-d H:i:sa')); 
+	           $this->Competisi_model->insert_submit($data);
+	           redirect('competition/debat') ;
 	        } 
     			break;
 
@@ -196,13 +200,17 @@ class Uploader extends CI_Controller {
 				
 	        if ( ! $this->upload->do_upload('bayar')) {
 	           $this->session->set_flashdata('errUp', 'The maximum size is 4MB and JPG/PNG/JPEG extension. Please Check again'); 
-	           redirect('competition/bisplan') ;
+	           redirect('competition/cercer') ;
 	        }				
 	        else { 
 		        $this->session->set_flashdata('succUp', 'File uploaded successfully'); 
-		        $data = array('pembayaran' => $this->upload->data('file_name')); 
-	           $this->Competisi_model->update_lomba($code, 'cercer_db',$data);
-	           redirect('competition/bisplan') ;
+		        $data = array(
+		        	'path' => 'uploads/submit_cercer/'.$this->upload->data('file_name'),
+		        	'kode'=>$code,
+		        	'jenis_event'=> 'cercer',
+		        	'timestamp'=>date('Y-m-d H:i:sa')); 
+	           $this->Competisi_model->insert_submit($data);
+	           redirect('competition/cercer') ;
 	        } 
     			break;
     	}

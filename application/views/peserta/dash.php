@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="ileft">
 			<h3>Userlogin : <?= $this->session->userdata('login')['email'];?></h3>
-			<h4>Date register : <?= $this->session->userdata('login')['date'];?></h4>
+			<h4>Date register : <?= date('F jS, Y H:i',strtotime($this->session->userdata('login')['date']));?></h4>
 		</div>
 		<div class="iright">
 			<h3 id="qwe"></h3>
@@ -40,8 +40,8 @@
 			<?php if ($bp==0 && $db==0 && $cc==1) { ?>
 				<div class="comp-b cercer">
 				<p>Cerdas Cermat Competition</p>
-					<h4>Team : </h4>
-					<h5>Status : </h5>
+					<h4>Team : <?= $cercer->nama_tim ; ?></h4>
+					<h5>Status : <?= $cercer->status?></h5>
 				</div>
 			<?php }elseif ($bp==1 && $db==0) { ?>
 				<div class="comp-b bisplan">
@@ -52,19 +52,19 @@
 			<?php }elseif ($bp==0 && $db==1) { ?>
 				<div class="comp-b debat">
 				<p>Debate Competition</p>
-					<h4>Team : </h4>
-					<h5>Status : </h5>
+					<h4>Team : <?= $debat->nama_tim ; ?></h4>
+					<h5>Status : <?= $debat->status?></h5>
 				</div>
 			<?php }elseif ($bp==1 && $db==1) { ?>
 				<div class="comp-b bisplan">
 				<p>Business Plan</p>
-					<h4>Team : </h4>
-					<h5>Status : </h5>
+					<h4>Team : <?= $bisplan->nama_tim ; ?></h4>
+					<h5>Status : <?= $bisplan->status?></h5>
 				</div>
 				<div class="comp-b debat">
 				<p>Debate Competition</p>
-					<h4>Team : </h4>
-					<h5>Status : </h5>
+					<h4>Team : <?= $debat->nama_tim ; ?></h4>
+					<h5>Status : <?= $debat->status?></h5>
 				</div>
 			<?php } ?>
 		</div>

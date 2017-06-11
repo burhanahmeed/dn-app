@@ -75,7 +75,7 @@
 					    	<?php foreach ($announce as $a) { ?>
 					    	
 						    <tr>
-						        <td><?= $a->date ?></td>
+						        <td><?= date('F jS, Y H:i',strtotime($a->date)) ?></td>
 						        <td><?= $a->desk ?></td>
 						        <td><?php if ($a->link == null) {
 						        	
@@ -117,7 +117,7 @@
 				<?php if (empty($bisplan->verifikasi)) { ?>
 					<!-- kosong -->
 				<?php }else{ ?>
-					<p>Your latest uploaded file. <a style="color: white" href="<?= base_url()?>uploads/bisplan/<?= $bisplan->verifikasi ?>">Here</a></p>
+					<p>Your latest uploaded file. <a style="color: white" href="<?= base_url()?>uploads/bisplan/<?= $bisplan->verifikasi ?>">CLICK HERE</a></p>
 					<?php } ?>
 
 					<form method="POST" action="<?= base_url()?>Uploader/upload_data/bisplan/<?= $bisplan->id ?>" enctype="multipart/form-data">
@@ -135,7 +135,7 @@
 				<?php if (empty($bisplan->pembayaran)) { ?>
 					<!-- kosong -->
 				<?php }else{ ?>
-					<p>Your latest uploaded file. <a style="color: white" href="<?= base_url()?>uploads/bisplan/<?= $bisplan->pembayaran ?>">Here</a></p>
+					<p>Your latest uploaded file. <a style="color: white" href="<?= base_url()?>uploads/bisplan/<?= $bisplan->pembayaran ?>">CLICK HERE</a></p>
 					<?php } ?>
 
 					<form method="POST" action="<?= base_url()?>Uploader/upload_bayar/bisplan/<?= $bisplan->id ?>" enctype="multipart/form-data">
@@ -158,7 +158,7 @@
 					 if (empty($submission->path)) { ?>
 					<!-- kosong -->
 					<?php }else{ ?>
-						<p>Your latest uploaded file. <a style="color: white" href="<?= base_url()?><?= $submission->path ?>">Here</a></p>
+						<p>Your latest uploaded file. <a style="color: white" href="<?= base_url()?><?= $submission->path ?>">CLICK HERE</a></p>
 					<?php } ?>
 
 					<?php if ($bisplan->st == 4) { ?>

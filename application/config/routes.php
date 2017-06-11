@@ -56,3 +56,4 @@ $route['competition'] = 'root/competition';
 $route['dashboard'] = 'root/dashboard';
 $route['register/(:any)'] = 'root/register/$1';
 $route['competition/(:any)'] = 'root/comp/$1';
+$route['reset/(:any)'] = 'auth/redirect_reset/$1';

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 10, 2017 at 05:19 PM
+-- Generation Time: Jun 11, 2017 at 02:04 PM
 -- Server version: 5.5.55-0ubuntu0.14.04.1
 -- PHP Version: 5.6.30-11+deb.sury.org~trusty+3
 
@@ -178,6 +178,29 @@ INSERT INTO `status` (`id`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tokens`
+--
+
+CREATE TABLE IF NOT EXISTS `tokens` (
+  `token` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uid` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` datetime NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tokens`
+--
+
+INSERT INTO `tokens` (`token`, `uid`, `date`, `status`) VALUES
+('cae8807e0e9cb42d483be916990d72', '3', '2017-06-11 13:43:29', 1),
+('822a7d836a52451621da61c4c0bcc7', '3', '2017-06-11 13:46:00', 1),
+('066e38583cfe2231c3d2c82b6741e1', '3', '2017-06-11 13:54:56', 1),
+('2e1e19a02213a88b2c3c495f64530e', '3', '2017-06-11 13:56:39', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -191,7 +214,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `cercer` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `user`
@@ -199,7 +222,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `email`, `password`, `date`, `debat`, `bisplan`, `cercer`) VALUES
 (1, 'burhan@gmail.com', '12345678', '2017-06-08 18:27:28', 1, 1, 0),
-(2, 'med@mail.com', '12345678', '2017-06-10 17:17:39', 0, 0, 1);
+(2, 'med@mail.com', '12345678', '2017-06-10 17:17:39', 0, 0, 1),
+(3, 'burhan@m.com', '25d55ad283aa400af464c76d713c07ad', '2017-06-11 13:43:06', 0, 0, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

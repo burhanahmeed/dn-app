@@ -9,23 +9,23 @@
 					<input class="form-control dn-form-control" type="text" name="tim">
 				</div>
 				<div class="form-group">
-				<label>Nama Ketua</label>
+				<label>Nama Anggota 1 (Ketua Tim)</label>
 					<input class="form-control dn-form-control" type="text" name="nama1">
 				</div>
 				<div class="form-group">
-				<label><?= $no?> Ketua</label>
+				<label><?= $no?> Anggota 1 (Ketua Tim)</label>
 					<input class="form-control dn-form-control" type="text" name="nim1">
 				</div>
 				<div class="form-group">
-				<label>Nama Anggota 1</label>
+				<label>Nama Anggota 2</label>
 					<input class="form-control dn-form-control" type="text" name="nama2">
 				</div>
 				<div class="form-group">
-				<label><?= $no?> Anggota 1</label>
+				<label><?= $no?> Anggota 2</label>
 					<input class="form-control dn-form-control" type="text" name="nim2">
 				</div>
 				<div class="form-group">
-				<label>Nama Anggota 2</label>
+				<label>Nama Anggota 3</label>
 					<input class="form-control dn-form-control" type="text" name="nama3">
 				</div>
 				<div class="form-group">
