@@ -107,6 +107,9 @@ class Root extends CI_Controller {
 		$bp = $get_sess[0]->bisplan;
 		$db = $get_sess[0]->debat;
 		$cc = $get_sess[0]->cercer;
+		if (!$this->session->userdata('login')) {
+			redirect('/');
+		}
 
 		$data = array(
 			'title'=> 'Competition Registration');
@@ -150,16 +153,22 @@ class Root extends CI_Controller {
 	function comp($lomba=""){
 		$lid = $this->session->userdata('login')['id'];
 		$ann = $this->Competisi_model->getAnn($lomba);
+		if (!$this->session->userdata('login')) {
+			redirect('/');
+		}
+		
 		switch ($lomba) {
 			case 'bisplan':
-				$fields = 'bisplan_db.id, bisplan_db.uid, nama_tim, asal_univ, ketua, nim_ketua, anggota1, nim_a1, anggota2, nim_a2, status.status,kontak,bisplan_db.status AS st, verifikasi, pembayaran';
+				$fields = 'bisplan_db.id, bisplan_db.uid, nama_tim, asal_univ, ketua, nim_ketua, anggota1, nim_a1, anggota2, nim_a2, status.status,kontak,bisplan_db.status AS st, verifikasi, pembayaran, semifinal';
 				$bisplan = $this->Competisi_model->getTim('bisplan_db',$lid,$fields);
-				$get_latest_file = $this->Competisi_model->getLatestFile($bisplan[0]->id);
+				$get_latest_file = $this->Competisi_model->getLatestFile($bisplan[0]->id,'bisplan');
+				$get_latest_filesem = $this->Competisi_model->getLatestFileSem($bisplan[0]->id);
 				$data = array(
 					'title'=> 'DN35 Business Plan');
 				$dataIsi = array(
 					'bisplan'=>$bisplan[0],
 					'submission'=>$get_latest_file[0],
+					'semis'=> $get_latest_filesem[0],
 					'announce'=>$ann);
 				$this->load->view('peserta/header',$data);
 				$this->load->view('peserta/lomba-det',$dataIsi);
@@ -168,7 +177,7 @@ class Root extends CI_Controller {
 			case 'debat':
 				$fields = 'debat_db.id, debat_db.uid, nama_tim, asal_univ, ketua, nim_ketua, anggota1, nim_a1, anggota2, nim_a2, status.status,kontak,debat_db.status AS st, verifikasi, pembayaran';
 				$bisplan = $this->Competisi_model->getTim('debat_db',$lid,$fields);
-				$get_latest_file = $this->Competisi_model->getLatestFile($bisplan[0]->id);
+				$get_latest_file = $this->Competisi_model->getLatestFile($bisplan[0]->id,'debat');
 				$data = array(
 					'title'=> 'DN35 Debate Competition');
 				$dataIsi = array(
@@ -182,7 +191,7 @@ class Root extends CI_Controller {
 			case 'cercer':
 				$fields = 'cercer_db.id, cercer_db.uid, nama_tim, asal_univ, ketua, nim_ketua, anggota1, nim_a1, anggota2, nim_a2, status.status,kontak,cercer_db.status AS st, verifikasi, pembayaran';
 				$bisplan = $this->Competisi_model->getTim('cercer_db',$lid,$fields);
-				$get_latest_file = $this->Competisi_model->getLatestFile($bisplan[0]->id);
+				$get_latest_file = $this->Competisi_model->getLatestFile($bisplan[0]->id,'cercer');
 				$data = array(
 					'title'=> 'DN35 Cerdas Cermat Competition');
 				$dataIsi = array(

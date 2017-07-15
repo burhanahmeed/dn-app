@@ -60,7 +60,7 @@
 				<h3>Announcement (Cerdas Cermat)</h3>
 				
 					    <?php if (empty($announce)) { ?>
-					    	<p>We don't have announcement for Business Plan Competition. Stay tuned coz anything will be here</p>
+					    	<p>We don't have announcement for Cerdas Cermat Competition. Stay tuned coz anything will be here</p>
 					    <?php }else{ ?>
 				<div class="table-responsive res">
 					<table class="table table-bordered">
@@ -107,7 +107,7 @@
 
 			<div class="upload-b">
 			<h4>Verify Your Team</h4>
-			<p>Upload data diri (KTM) masing anggota tim dan bukti transfer</p>
+			<p>Upload data diri (Kartu Pelajar) masing anggota tim dan bukti transfer</p>
 			<p>Format : </p>
 			<p>DATA_TEAM CODE.zip</p>
 			<p>BAYAR_TEAM CODE.jpg</p>
@@ -117,10 +117,10 @@
 				<?php if (empty($bisplan->verifikasi)) { ?>
 					<!-- kosong -->
 				<?php }else{ ?>
-					<p>Your latest uploaded file. <a style="color: white" href="<?= base_url()?>uploads/bisplan/<?= $bisplan->verifikasi ?>">CLICK HERE</a></p>
+					<p>Your latest uploaded file. <a style="color: white" href="<?= base_url()?>uploads/cercer/<?= $bisplan->verifikasi ?>">CLICK HERE</a></p>
 					<?php } ?>
 
-					<form method="POST" action="<?= base_url()?>Uploader/upload_data/bisplan/<?= $bisplan->id ?>" enctype="multipart/form-data">
+					<form method="POST" action="<?= base_url()?>Uploader/upload_data/cercer/<?= $bisplan->id ?>" enctype="multipart/form-data">
 						<div class="form-group">
 							<input type="file" name="datadiri" required="">
 						</div>
@@ -135,10 +135,10 @@
 				<?php if (empty($bisplan->pembayaran)) { ?>
 					<!-- kosong -->
 				<?php }else{ ?>
-					<p>Your latest uploaded file. <a style="color: white" href="<?= base_url()?>uploads/bisplan/<?= $bisplan->pembayaran ?>">CLICK HERE</a></p>
+					<p>Your latest uploaded file. <a style="color: white" href="<?= base_url()?>uploads/cercer/<?= $bisplan->pembayaran ?>">CLICK HERE</a></p>
 					<?php } ?>
 
-					<form method="POST" action="<?= base_url()?>Uploader/upload_bayar/bisplan/<?= $bisplan->id ?>" enctype="multipart/form-data">
+					<form method="POST" action="<?= base_url()?>Uploader/upload_bayar/cercer/<?= $bisplan->id ?>" enctype="multipart/form-data">
 						<div class="form-group">
 							<input required="" type="file" name="bayar">
 						</div>
@@ -148,7 +148,7 @@
 					</form>
 				</div>
 			</div>
-			<div class="upload-b">
+		<!-- 	<div class="upload-b">
 			<h4><strong>Submission</strong></h4>
 				<p>File format : CC_TEAM NAME_TEAM CODE.pdf</p>
 				<div class="upp">
@@ -156,13 +156,13 @@
 
 					<?php
 					 if (empty($submission->path)) { ?>
-					<!-- kosong -->
+					
 					<?php }else{ ?>
 						<p>Your latest uploaded file. <a style="color: white" href="<?= base_url()?><?= $submission->path ?>">CLICK HERE</a></p>
 					<?php } ?>
 
 					<?php if ($bisplan->st == 4) { ?>
-						<form method="POST" action="<?= base_url()?>Uploader/submission/bisplan/<?= $bisplan->id ?>" enctype="multipart/form-data">
+						<form method="POST" action="<?= base_url()?>Uploader/submission/cercer/<?= $bisplan->id ?>" enctype="multipart/form-data">
 							<div class="form-group">
 								<input required="" type="file" name="submission">
 							</div>
@@ -174,8 +174,8 @@
 						<h4>Please verify you identity and payment.</h4>
 						<?php } ?>
 
-				</div>
-			</div>
+				</div> 
+			</div>-->
 		</div>
 	</div>
 </div>

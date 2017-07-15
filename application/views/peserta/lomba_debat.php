@@ -60,7 +60,7 @@
 				<h3>Announcement (Debate Competition)</h3>
 				
 					    <?php if (empty($announce)) { ?>
-					    	<p>We don't have announcement for Business Plan Competition. Stay tuned coz anything will be here</p>
+					    	<p>We don't have announcement for Debate Competition. Stay tuned coz anything will be here</p>
 					    <?php }else{ ?>
 				<div class="table-responsive res">
 					<table class="table table-bordered">
@@ -117,10 +117,10 @@
 				<?php if (empty($bisplan->verifikasi)) { ?>
 					<!-- kosong -->
 				<?php }else{ ?>
-					<p>Your latest uploaded file. <a style="color: white" href="<?= base_url()?>uploads/bisplan/<?= $bisplan->verifikasi ?>">CLICK HERE</a></p>
+					<p>Your latest uploaded file. <a style="color: white" href="<?= base_url()?>uploads/debat/<?= $bisplan->verifikasi ?>">CLICK HERE</a></p>
 					<?php } ?>
 
-					<form method="POST" action="<?= base_url()?>Uploader/upload_data/bisplan/<?= $bisplan->id ?>" enctype="multipart/form-data">
+					<form method="POST" action="<?= base_url()?>Uploader/upload_data/debat/<?= $bisplan->id ?>" enctype="multipart/form-data">
 						<div class="form-group">
 							<input type="file" name="datadiri" required="">
 						</div>
@@ -135,10 +135,10 @@
 				<?php if (empty($bisplan->pembayaran)) { ?>
 					<!-- kosong -->
 				<?php }else{ ?>
-					<p>Your latest uploaded file. <a style="color: white" href="<?= base_url()?>uploads/bisplan/<?= $bisplan->pembayaran ?>">CLICK HERE</a></p>
+					<p>Your latest uploaded file. <a style="color: white" href="<?= base_url()?>uploads/debat/<?= $bisplan->pembayaran ?>">CLICK HERE</a></p>
 					<?php } ?>
 
-					<form method="POST" action="<?= base_url()?>Uploader/upload_bayar/bisplan/<?= $bisplan->id ?>" enctype="multipart/form-data">
+					<form method="POST" action="<?= base_url()?>Uploader/upload_bayar/debat/<?= $bisplan->id ?>" enctype="multipart/form-data">
 						<div class="form-group">
 							<input required="" type="file" name="bayar">
 						</div>
@@ -162,7 +162,7 @@
 					<?php } ?>
 
 					<?php if ($bisplan->st == 4) { ?>
-						<form method="POST" action="<?= base_url()?>Uploader/submission/bisplan/<?= $bisplan->id ?>" enctype="multipart/form-data">
+						<form method="POST" action="<?= base_url()?>Uploader/submission/debat/<?= $bisplan->id ?>" enctype="multipart/form-data">
 							<div class="form-group">
 								<input required="" type="file" name="submission">
 							</div>

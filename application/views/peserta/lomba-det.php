@@ -148,33 +148,63 @@
 					</form>
 				</div>
 			</div>
-			<div class="upload-b">
-			<h4><strong>Submission</strong></h4>
-				<p>File format : BISPLAN_TEAM NAME_TEAM CODE.pdf</p>
-				<div class="upp">
-				<label>Submit Your Work (Max 20MB)</label>
+			<div class="upload-b row">
+			<div class="col-md-6 col-sm-6">
+				<h4><strong>Submission</strong></h4>
+					<p>File format : BISPLAN_TEAM NAME_TEAM CODE.pdf</p>
+					<div class="upp">
+					<label>Submit Your Work (Max 20MB)</label>
 
-					<?php
-					 if (empty($submission->path)) { ?>
-					<!-- kosong -->
-					<?php }else{ ?>
-						<p>Your latest uploaded file. <a style="color: white" href="<?= base_url()?><?= $submission->path ?>">CLICK HERE</a></p>
-					<?php } ?>
-
-					<?php if ($bisplan->st == 4) { ?>
-						<form method="POST" action="<?= base_url()?>Uploader/submission/bisplan/<?= $bisplan->id ?>" enctype="multipart/form-data">
-							<div class="form-group">
-								<input required="" type="file" name="submission">
-							</div>
-							<div class="form-group">
-								<button class="btn dn-btn-white">Submit</button>
-							</div>
-						</form>
-					<?php }else{ ?>
-						<h4>Please verify you identity and payment.</h4>
+						<?php
+						 if (empty($submission->path)) { ?>
+						<!-- kosong -->
+						<?php }else{ ?>
+							<p>Your latest uploaded file. <a style="color: white" href="<?= base_url()?><?= $submission->path ?>">CLICK HERE</a></p>
 						<?php } ?>
 
-				</div>
+						<?php if ($bisplan->st == 4) { ?>
+							<form method="POST" action="<?= base_url()?>Uploader/submission/bisplan/<?= $bisplan->id ?>" enctype="multipart/form-data">
+								<div class="form-group">
+									<input required="" type="file" name="submission">
+								</div>
+								<div class="form-group">
+									<button class="btn dn-btn-white">Submit</button>
+								</div>
+							</form>
+						<?php }else{ ?>
+							<h4>Please verify you identity and payment.</h4>
+							<?php } ?>
+					</div>
+			</div>
+					<?php if ($bisplan->semifinal == 1) { ?>
+				<div class="col-md-6 col-sm-6">
+					<h4><strong>Semi Final Submission</strong></h4>
+					<p>File format : SEMIS_TEAM NAME_TEAM CODE.pdf</p>
+					<div class="upp">
+					<label>Submit Your Work (Max 20MB)</label>
+
+						<?php
+						 if (empty($semis->path)) { ?>
+						<!-- kosong -->
+						<?php }else{ ?>
+							<p>Your latest uploaded file. <a style="color: white" href="<?= base_url()?><?= $semis->path ?>">CLICK HERE</a></p>
+						<?php } ?>
+
+							<form method="POST" action="<?= base_url()?>Uploader/semis/<?= $bisplan->id ?>" enctype="multipart/form-data">
+								<div class="form-group">
+									<input required="" type="file" name="submission">
+								</div>
+								<div class="form-group">
+									<button class="btn dn-btn-white">Submit</button>
+								</div>
+							</form>
+						</div>
+					</div>
+						<?php }else{ ?>
+							<!-- kosong -->
+
+							<?php } ?>
+
 			</div>
 		</div>
 	</div>

@@ -11,7 +11,7 @@
 		</div>
 	</div>
 	<div class="foot">
-		&copy; <a href="http://kusia.ga">ITDEV</a> 2017
+		&copy; ITDEV 2017 | Competition Management by <a href="http://kusia.ga">ITDEV Diesnat 35</a>
 	</div>
 
 </body>

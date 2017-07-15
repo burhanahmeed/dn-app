@@ -40,10 +40,25 @@ class Competisi_model extends CI_Model {
         function insert_submit($data){
                 $this->db->insert('file_upload',$data);
         }
-        function getLatestFile($code){
+        function getLatestFile($code,$jenis){
                 $query = $this->db->select('path')
                         ->from('file_upload')
                         ->where('kode',$code)
+                        ->where('jenis_event',$jenis)
+                        ->limit(1)
+                        ->order_by('id', 'DESC')
+                        ->get();
+                if ($query->num_rows() >= 1) {
+                        return $query->result();
+                }else{
+                        return null;
+                }
+        }
+        function getLatestFileSem($code){
+                $query = $this->db->select('path')
+                        ->from('file_upload')
+                        ->where('kode',$code)
+                        ->where('jenis_event','bisplan-s')
                         ->limit(1)
                         ->order_by('id', 'DESC')
                         ->get();

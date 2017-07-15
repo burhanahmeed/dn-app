@@ -26,7 +26,7 @@
 		</div>
 		<div class="nav-app right">
 			<ul>
-				<li><a class="1234" href="#" toggle="drop"><?= $this->session->userdata('login')['email'];?></a></li>
+				<li><a class="1234 a234" href="#" toggle="drop"><?= $this->session->userdata('login')['email'];?></a><a class="1234 a321" href="#" toggle="drop"><span class=" 	glyphicon glyphicon-user"></span></a></li>
 			</ul>
 			<div class="dropdwn" id="123">
 				<li><a href="">Change Password</a></li>

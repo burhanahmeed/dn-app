@@ -10,6 +10,9 @@
 					<h4>Cerdas Cermat Competition</h4>
 					<img src="https://d30y9cdsu7xlg0.cloudfront.net/png/381701-200.png">
 					<div class="join">
+					<div class="form-group">
+						<a target="blank" href="http://kusia.ga/RULEBOOKCERCER" class="btn dn-btn-white">Download Rulebook</a>
+					</div>
 						<a href="competition/cercer" class="btn dn-btn-white">Open</a>
 					</div>
 				</div>
@@ -25,6 +28,9 @@
 					<h4>Business Plan Competition</h4>
 					<img src="https://d30y9cdsu7xlg0.cloudfront.net/png/381701-200.png">
 					<div class="join">
+					<div class="form-group">
+						<a target="blank" href="http://kusia.ga/RULEBOOKBISPLAN" class="btn dn-btn-white">Download Rulebook</a>
+					</div>
 					<?php if ($bp==1) {?>
 						<a href="competition/bisplan" class="btn dn-btn-white">Open</a>
 					<?php }elseif ($bp==0) {?>
@@ -39,6 +45,9 @@
 					<h4>Debate Competition</h4>
 					<img src="https://d30y9cdsu7xlg0.cloudfront.net/png/381701-200.png">
 					<div class="join">
+					<div class="form-group">
+						<a target="blank" href="http://kusia.ga/RULEBOOKDEBAT" class="btn dn-btn-white">Download Rulebook</a>
+					</div>
 					<?php if ($db==1) {?>
 						<a href="competition/debat" class="btn dn-btn-white">Open</a>
 					<?php }elseif ($db==0) {?>

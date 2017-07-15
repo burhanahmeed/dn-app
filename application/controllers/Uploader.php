@@ -17,10 +17,11 @@ class Uploader extends CI_Controller {
 	        $config['max_size']      = 5000;
 	        $config['overwrite'] = false;
 	        $config['file_name'] = 'DATA_'.$code.'-';
-	        $this->load->library('upload', $config);
+	        $this->upload->initialize($config);
+	        $this->load->library('upload');
 				
 	        if ( ! $this->upload->do_upload('datadiri')) {
-	           $this->session->set_flashdata('errUp', 'The maximum size is 4MB and ZIP extension. Please Check again'); 
+	           $this->session->set_flashdata('errUp', $this->upload->display_errors()); 
 	           redirect('competition/bisplan') ;
 	        }				
 	        else { 
@@ -37,7 +38,8 @@ class Uploader extends CI_Controller {
 	        $config['max_size']      = 5000;
 	        $config['overwrite'] = false;
 	        $config['file_name'] = 'DATA_'.$code.'-';
-	        $this->load->library('upload', $config);
+	        $this->upload->initialize($config);
+	        $this->load->library('upload');
 				
 	        if ( ! $this->upload->do_upload('datadiri')) {
 	           $this->session->set_flashdata('errUp', 'The maximum size is 4MB and ZIP extension. Please Check again'); 
@@ -54,10 +56,11 @@ class Uploader extends CI_Controller {
     		case 'cercer':
     		$config['upload_path']   = './uploads/cercer/'; 
 	        $config['allowed_types'] = 'zip'; 
-	        $config['max_size']      = 5000;
+	        $config['max_size']      = 50000;
 	        $config['overwrite'] = false;
 	        $config['file_name'] = 'DATA_'.$code.'-';
-	        $this->load->library('upload', $config);
+	        $this->upload->initialize($config);
+	        $this->load->library('upload');
 				
 	        if ( ! $this->upload->do_upload('datadiri')) {
 	           $this->session->set_flashdata('errUp', 'The maximum size is 4MB and ZIP extension. Please Check again'); 
@@ -81,10 +84,11 @@ class Uploader extends CI_Controller {
 	        $config['max_size']      = 5000;
 	        $config['overwrite'] = false;
 	        $config['file_name'] = 'BAYAR_'.$code.'-';
-	        $this->load->library('upload', $config);
+	        $this->upload->initialize($config);
+	        $this->load->library('upload');
 				
 	        if ( ! $this->upload->do_upload('bayar')) {
-	           $this->session->set_flashdata('errUp', 'The maximum size is 4MB and JPG/PNG/JPEG extension. Please Check again'); 
+	           $this->session->set_flashdata('errUp', 'The maximum size is 4MB and JPG/PNG/JPEG extension. Please Check again');
 	           redirect('competition/bisplan') ;
 	        }				
 	        else { 
@@ -101,10 +105,12 @@ class Uploader extends CI_Controller {
 	        $config['max_size']      = 5000;
 	        $config['overwrite'] = false;
 	        $config['file_name'] = 'BAYAR_'.$code.'-';
-	        $this->load->library('upload', $config);
+	        $this->upload->initialize($config);
+	        $this->load->library('upload');
 				
 	        if ( ! $this->upload->do_upload('bayar')) {
-	           $this->session->set_flashdata('errUp', 'The maximum size is 4MB and JPG/PNG/JPEG extension. Please Check again'); 
+	           $this->session->set_flashdata('errUp', 'The maximum size is 4MB and JPG/PNG/JPEG extension. Please Check again');
+	           // $this->session->set_flashdata('errUp', $this->upload->display_errors());  
 	           redirect('competition/debat') ;
 	        }				
 	        else { 
@@ -121,7 +127,8 @@ class Uploader extends CI_Controller {
 	        $config['max_size']      = 5000;
 	        $config['overwrite'] = false;
 	        $config['file_name'] = 'BAYAR_'.$code.'-';
-	        $this->load->library('upload', $config);
+	        $this->upload->initialize($config);
+	        $this->load->library('upload');
 				
 	        if ( ! $this->upload->do_upload('bayar')) {
 	           $this->session->set_flashdata('errUp', 'The maximum size is 4MB and JPG/PNG/JPEG extension. Please Check again'); 
@@ -148,10 +155,12 @@ class Uploader extends CI_Controller {
 	        $config['max_size']      = 20000;
 	        $config['overwrite'] = false;
 	        $config['file_name'] = 'BISPLAN_'.$nama_tim.'_'.$code.'-';
-	        $this->load->library('upload', $config);
+	        $this->upload->initialize($config);
+	        $this->load->library('upload');
 				
 	        if ( ! $this->upload->do_upload('submission')) {
-	           $this->session->set_flashdata('errUp', 'The maximum size is 20MB and PDF extension. Please Check again'); 
+	           // $this->session->set_flashdata('errUp', 'The maximum size is 20MB and PDF extension. Please Check again');
+	           $this->session->set_flashdata('errUp', $this->upload->display_errors()); 
 	           redirect('competition/bisplan') ;
 	        }				
 	        else { 
@@ -172,7 +181,8 @@ class Uploader extends CI_Controller {
 	        $config['max_size']      = 5000;
 	        $config['overwrite'] = false;
 	        $config['file_name'] = 'BAYAR_'.$code.'-';
-	        $this->load->library('upload', $config);
+	        $this->upload->initialize($config);
+	        $this->load->library('upload');
 				
 	        if ( ! $this->upload->do_upload('bayar')) {
 	           $this->session->set_flashdata('errUp', 'The maximum size is 4MB and JPG/PNG/JPEG extension. Please Check again'); 
@@ -196,7 +206,8 @@ class Uploader extends CI_Controller {
 	        $config['max_size']      = 5000;
 	        $config['overwrite'] = false;
 	        $config['file_name'] = 'BAYAR_'.$code.'-';
-	        $this->load->library('upload', $config);
+	        $this->upload->initialize($config);
+	        $this->load->library('upload');
 				
 	        if ( ! $this->upload->do_upload('bayar')) {
 	           $this->session->set_flashdata('errUp', 'The maximum size is 4MB and JPG/PNG/JPEG extension. Please Check again'); 
@@ -214,5 +225,33 @@ class Uploader extends CI_Controller {
 	        } 
     			break;
     	}
+    }
+
+    function semis($code){
+    	$lid = $this->session->userdata('login')['id'];
+    	$getter = $this->Competisi_model->getTim('bisplan_db',$lid,'nama_tim');
+		$nama_tim = $getter[0]->nama_tim;
+		$config['upload_path']   = './uploads/submit_bisplan/'; 
+        $config['allowed_types'] = 'pdf'; 
+        $config['max_size']      = 20000;
+        $config['overwrite'] = false;
+        $config['file_name'] = 'SEMIS_'.$nama_tim.'_'.$code.'-';
+        $this->upload->initialize($config);
+        $this->load->library('upload');
+			
+        if ( ! $this->upload->do_upload('submission')) {
+           $this->session->set_flashdata('errUp', 'The maximum size is 20MB and PDF extension. Please Check again'); 
+           redirect('competition/bisplan') ;
+        }				
+        else { 
+	        $this->session->set_flashdata('succUp', 'File uploaded successfully'); 
+	        $data = array(
+	        	'path' => 'uploads/submit_bisplan/'.$this->upload->data('file_name'),
+	        	'kode'=>$code,
+	        	'jenis_event'=> 'bisplan-s',
+	        	'timestamp'=>date('Y-m-d H:i:sa')); 
+           $this->Competisi_model->insert_submit($data);
+           redirect('competition/bisplan') ;
+        } 
     }
 }

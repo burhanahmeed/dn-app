@@ -398,3 +398,14 @@ h1, h2, h3, h4, h5, p, a, label,span, input,small, strong,td,th,button{
 	}
 
 }
+.a321{
+	display: none;
+}
+@media screen and (max-width: 540px){
+	.a321{
+		display: inline;
+	}
+	.a234{
+		display: none;
+	}
+}
