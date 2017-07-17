@@ -420,6 +420,11 @@ h1, h2, h3, h4, h5, p, a, label,span, input,small, strong,td,th,button{
 .a321{
 	display: none;
 }
+/*@media screen and (max-width: 5200px){
+	.angin{
+		padding: 20% 50px;
+	}
+}*/
 @media screen and (max-width: 540px){
 	.a321{
 		display: inline;
@@ -427,28 +432,19 @@ h1, h2, h3, h4, h5, p, a, label,span, input,small, strong,td,th,button{
 	.a234{
 		display: none;
 	}
-	.angin{
+/*	.angin{
 		padding: 0;
-	}
+	}*/
 }
-@media screen and (min-width: 545px){
+
+@media (min-width: 545px) and (max-width: 770px){
 	.angin{
 		padding: 20px 50px;
 	}
 }
-@media screen and (max-width: 770px){
-	.angin{
-		padding: 20px 50px;
-	}
-}
-@media screen and (max-width: 540px){
+/*@media screen and (max-width: 540px){
 
 	.angin{
 		padding: 0;
 	}
-}
-@media screen and (max-width: 5200px){
-	.angin{
-		padding: 20% 50px;
-	}
-}
+}*/
