@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 11, 2017 at 02:04 PM
+-- Generation Time: Jul 17, 2017 at 06:52 PM
 -- Server version: 5.5.55-0ubuntu0.14.04.1
--- PHP Version: 5.6.30-11+deb.sury.org~trusty+3
+-- PHP Version: 5.6.31-1~ubuntu14.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `diesnat`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`) VALUES
+(1, 'admin', '827ccb0eea8a706c4c34a16891f84e7b');
 
 -- --------------------------------------------------------
 
@@ -63,6 +84,7 @@ CREATE TABLE IF NOT EXISTS `bisplan_db` (
   `pembayaran` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(4) COLLATE utf8mb4_unicode_ci NOT NULL,
   `kontak` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `semifinal` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `nama_tim` (`nama_tim`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -71,8 +93,8 @@ CREATE TABLE IF NOT EXISTS `bisplan_db` (
 -- Dumping data for table `bisplan_db`
 --
 
-INSERT INTO `bisplan_db` (`id`, `uid`, `nama_tim`, `asal_univ`, `ketua`, `nim_ketua`, `anggota1`, `nim_a1`, `anggota2`, `nim_a2`, `verifikasi`, `pembayaran`, `status`, `kontak`) VALUES
-('FHPBB', 1, 'Tim Jago', 'ITSSS', 'MED', '1234', 'HAN', '1231', 'AHAH', '1212', '', 'BAYAR_FHPBB-.png', '4', '1212121');
+INSERT INTO `bisplan_db` (`id`, `uid`, `nama_tim`, `asal_univ`, `ketua`, `nim_ketua`, `anggota1`, `nim_a1`, `anggota2`, `nim_a2`, `verifikasi`, `pembayaran`, `status`, `kontak`, `semifinal`) VALUES
+('FHPBB', 1, 'Tim Jago', 'ITSSS', 'MED', '1234', 'HAN', '1231', 'AHAH', '1212', 'DATA_FHPBB-1.zip', 'BAYAR_FHPBB-.jpg', '4', '1212121', 0);
 
 -- --------------------------------------------------------
 
@@ -104,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `cercer_db` (
 --
 
 INSERT INTO `cercer_db` (`id`, `uid`, `nama_tim`, `asal_univ`, `ketua`, `nim_ketua`, `anggota1`, `nim_a1`, `anggota2`, `nim_a2`, `verifikasi`, `pembayaran`, `status`, `kontak`) VALUES
-('1XIM9', 2, 'Weheheh', 'SMA AA', 'Hoal', '12', 'Zola', '21', 'Lala', '33', '', '', '1', '8881211313');
+('1XIM9', 2, 'Weheheh', 'SMA AA', 'Hoal', '12', 'Zola', '21', 'Lala', '33', '', 'BAYAR_1XIM9-.jpg', '4', '8881211313');
 
 -- --------------------------------------------------------
 
@@ -136,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `debat_db` (
 --
 
 INSERT INTO `debat_db` (`id`, `uid`, `nama_tim`, `asal_univ`, `ketua`, `nim_ketua`, `anggota1`, `nim_a1`, `anggota2`, `nim_a2`, `verifikasi`, `pembayaran`, `status`, `kontak`) VALUES
-('320P2', 1, 'Ecek Ecek', 'Universiti Malaysia', 'Ketut', '11313', 'Tutututu', '22111', 'Enakii', '221122', '', '', '1', 'id LINE : Wahahaha');
+('320P2', 1, 'Ecek Ecek', 'Universiti Malaysia', 'Ketut', '11313', 'Tutututu', '22111', 'Enakii', '221122', '', 'BAYAR_320P2-.png', '4', 'id LINE : Wahahaha');
 
 -- --------------------------------------------------------
 
@@ -151,7 +173,15 @@ CREATE TABLE IF NOT EXISTS `file_upload` (
   `path` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `file_upload`
+--
+
+INSERT INTO `file_upload` (`id`, `kode`, `jenis_event`, `path`, `timestamp`) VALUES
+(1, 'FHPBB', 'bisplan', 'uploads/submit_bisplan/BISPLAN_Tim_Jago_FHPBB-.pdf', '2017-07-17 09:53:18'),
+(2, '320P2', 'debat', 'uploads/submit_debat/DEBATE__320P2-.pdf', '2017-07-17 10:01:33');
 
 -- --------------------------------------------------------
 
@@ -214,16 +244,17 @@ CREATE TABLE IF NOT EXISTS `user` (
   `cercer` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `date`, `debat`, `bisplan`, `cercer`) VALUES
-(1, 'burhan@gmail.com', '12345678', '2017-06-08 18:27:28', 1, 1, 0),
-(2, 'med@mail.com', '12345678', '2017-06-10 17:17:39', 0, 0, 1),
-(3, 'burhan@m.com', '25d55ad283aa400af464c76d713c07ad', '2017-06-11 13:43:06', 0, 0, 0);
+(1, 'burhan@gmail.com', '25d55ad283aa400af464c76d713c07ad', '2017-06-08 18:27:28', 1, 1, 0),
+(2, 'med@mail.com', '25d55ad283aa400af464c76d713c07ad', '2017-06-10 17:17:39', 0, 0, 1),
+(3, 'burhan@m.com', '25d55ad283aa400af464c76d713c07ad', '2017-06-11 13:43:06', 0, 0, 0),
+(4, 'b@b.com', '25d55ad283aa400af464c76d713c07ad', '2017-06-15 21:43:44', 0, 0, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

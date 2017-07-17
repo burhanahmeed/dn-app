@@ -21,7 +21,8 @@ class Uploader extends CI_Controller {
 	        $this->load->library('upload');
 				
 	        if ( ! $this->upload->do_upload('datadiri')) {
-	           $this->session->set_flashdata('errUp', $this->upload->display_errors()); 
+	        	$this->session->set_flashdata('errUp', 'The maximum size is 4MB and ZIP extension. Please Check again');
+	           // $this->session->set_flashdata('errUp', $this->upload->display_errors()); 
 	           redirect('competition/bisplan') ;
 	        }				
 	        else { 
@@ -159,8 +160,8 @@ class Uploader extends CI_Controller {
 	        $this->load->library('upload');
 				
 	        if ( ! $this->upload->do_upload('submission')) {
-	           // $this->session->set_flashdata('errUp', 'The maximum size is 20MB and PDF extension. Please Check again');
-	           $this->session->set_flashdata('errUp', $this->upload->display_errors()); 
+	           $this->session->set_flashdata('errUp', 'The maximum size is 20MB and PDF extension. Please Check again');
+	           // $this->session->set_flashdata('errUp', $this->upload->display_errors()); 
 	           redirect('competition/bisplan') ;
 	        }				
 	        else { 
@@ -176,16 +177,17 @@ class Uploader extends CI_Controller {
     			break;
     		
     		case 'debat':
-    		$config['upload_path']   = './uploads/debat/'; 
-	        $config['allowed_types'] = 'jpg|png|jpeg'; 
-	        $config['max_size']      = 5000;
+    		$config['upload_path']   = './uploads/submit_debat/'; 
+	        $config['allowed_types'] = 'pdf'; 
+	        $config['max_size']      = 20000;
 	        $config['overwrite'] = false;
-	        $config['file_name'] = 'BAYAR_'.$code.'-';
+	        $config['file_name'] = 'DEBATE_'.$nama_tim.'_'.$code.'-';
 	        $this->upload->initialize($config);
 	        $this->load->library('upload');
 				
-	        if ( ! $this->upload->do_upload('bayar')) {
-	           $this->session->set_flashdata('errUp', 'The maximum size is 4MB and JPG/PNG/JPEG extension. Please Check again'); 
+	        if ( ! $this->upload->do_upload('submission')) {
+	           $this->session->set_flashdata('errUp', 'The maximum size is 20MB and PDF extension. Please Check again'); 
+	           // $this->session->set_flashdata('errUp', $this->upload->display_errors()); 
 	           redirect('competition/debat') ;
 	        }				
 	        else { 

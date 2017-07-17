@@ -78,7 +78,7 @@ class Auth extends CI_Controller {
 			$mail = $this->input->post('emails');
 			$cek = $this->Auth_model->getData($mail);
 			if ($cek == false) {
-				$this->session->set_flashdata('errRegis', 'We can not find your email you entered');
+				$this->session->set_flashdata('errRegis', 'We can not find the email you entered');
 				redirect('/');
 			}
 			$token = $this->Auth_model->inserttoken($cek[0]->id);
@@ -89,7 +89,7 @@ class Auth extends CI_Controller {
 	        $to_email = $mail;
 	        $subject = '[DN35 Password Reset]';
 	        $message = '
-				<style>
+			<style>
 				body {
 				    padding: 0;
 				    margin: 0;
@@ -133,21 +133,9 @@ class Auth extends CI_Controller {
 				}
 				</style>
 
-				<!--
-				Responsive Email Template by @keenthemes
-				A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
-				Licensed under MIT
-				-->
-
 				<div id="mailsub" class="notification" align="center">
-
+Diesnatalis Kopma dr.Angka ITS ke-35
 				<table width="100%" border="0" cellspacing="0" cellpadding="0" style="min-width: 320px;"><tr><td align="center" bgcolor="#eff3f8">
-
-
-				<!--[if gte mso 10]>
-				<table width="680" border="0" cellspacing="0" cellpadding="0">
-				<tr><td>
-				<![endif]-->
 
 				<table border="0" cellspacing="0" cellpadding="0" class="table_width_100" width="100%" style="max-width: 680px; min-width: 300px;">
 				    <tr><td>
@@ -168,7 +156,7 @@ class Auth extends CI_Controller {
 							</td>
 							</tr>
 						</table>
-						<!-- padding --><div style="height: 50px; line-height: 50px; font-size: 10px;"></div>
+						<!-- padding --><div style="height: 50px; line-height: 50px; font-size: 10px;"></a></div>
 					</td></tr>
 					<!--header END-->
 
@@ -176,7 +164,7 @@ class Auth extends CI_Controller {
 					<tr><td align="center" bgcolor="#fbfcfd">
 						<table width="90%" border="0" cellspacing="0" cellpadding="0">
 							<tr><td align="center">
-								<!-- padding --><div style="height: 60px; line-height: 60px; font-size: 10px;"></div>
+								<!-- padding --><div style="height: 60px; line-height: 60px; font-size: 10px;"><img style="opacity:0.3" src="https://image.ibb.co/ncxPZa/dnlogo.png"></div>
 								<div style="line-height: 44px;">
 									<font face="Arial, Helvetica, sans-serif" size="5" color="#57697e" style="font-size: 34px;">
 									<span style="font-family: Arial, Helvetica, sans-serif; font-size: 34px; color: #57697e;">
@@ -189,14 +177,17 @@ class Auth extends CI_Controller {
 								<div style="line-height: 24px;">
 									<font face="Arial, Helvetica, sans-serif" size="4" color="#57697e" style="font-size: 15px;">
 									<span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color: #57697e;">
-										Silahkan klik tombol dibawah ini untuk melakukan reset password
+										Silahkan klik tombol dibawah ini untuk melakukan reset password. (Expired in 15 minutes)
 									</span></font>
 								</div>
 								<!-- padding --><div style="height: 10px; line-height: 40px; font-size: 10px;"></div>
 							</td></tr>
 							<tr><td align="center">
 								<div style="line-height: 24px;">
-									<a href="'.$url.'" target="_blank" class="btn btn-danger block-center">
+        <style>
+          .btn-dn{background-color:green;padding:10px;color:white;text-decoration:none;border-radius:10px}          
+         </style>      
+<a href="'.$url.'" target="_blank" class="btn btn-danger block-center btn-dn">
 									    Reset
 									</a>
 								</div>
@@ -223,7 +214,7 @@ class Auth extends CI_Controller {
 							<tr><td align="center" style="padding:20px;flaot:left;width:100%; text-align:center;">
 								<font face="Arial, Helvetica, sans-serif" size="3" color="#96a5b5" style="font-size: 13px;">
 								<span style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: #96a5b5;">
-								Template by	Metronic. ALL Rights Reserved.
+                  Template by	Metronic. ALL Rights Reserved. | Supported by <a href="mailto:my@kusia.ga">KUSIAGA</a>
 								</span></font>				
 							</td></tr>			
 						</table>
@@ -305,5 +296,21 @@ class Auth extends CI_Controller {
     } 
     public function base64url_decode($data) { 
       return base64_decode(str_pad(strtr($data, '-_', '+/'), strlen($data) % 4, '=', STR_PAD_RIGHT)); 
+    }
+
+    function changePassword(){
+    	$id = $this->session->userdata('login')['id'];
+    	$this->form_validation->set_rules('pass','Password','required|trim|matches[cpass]|min_length[8]');
+		$this->form_validation->set_rules('cpass','Confirm Password','required|trim');
+    	$data = array(
+    		'password'=>md5($this->input->post('pass')));
+    
+    	if ($this->form_validation->run()) {
+    		$this->Auth_model->updateLogin($data,$id);
+    		$this->session->set_flashdata('succhg', 'New password saved');
+    	}else{
+    		$this->session->set_flashdata('errchg',validation_errors());
+    	}
+    	redirect('dashboard');
     }
 }

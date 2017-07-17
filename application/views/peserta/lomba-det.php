@@ -92,7 +92,7 @@
 			</div>
 
 			<?php
-			if ($this->session->userdata('errUp')) {
+			if ($this->session->flashdata('errUp')) {
 				echo '<div class="alert alert-danger position alert-dismissable" style="position:fixed">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 						  '.$this->session->userdata('errUp').'

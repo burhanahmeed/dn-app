@@ -35,7 +35,7 @@
 		<div class="section">
 			<div class="col-md-6 col-sm-6 onhidden">
 				<div class="angin" style="border-right: 1px grey solid">
-					<img src="http://asc.fisipol.ugm.ac.id/wp-content/uploads/2017/03/Logo-UGM-460x460.png">
+					<img src="<?= base_url()?>aset/img/dnlogo.png">
 					<h3>Diesnatalis Kopma ITS 35</h3>
 					<h5>All Event in One Account</h5>
 				</div>
@@ -72,7 +72,7 @@
 		</div>
 	</section>
 		<div style="padding: 10px ; bottom: 10px;right: 10px">
-			Developed by <a href="mailto:my@kusia.ga"> ITDEV</a>	
+			Developed by ITDEV Kopma ITS	
 		</div>
 </body>
 

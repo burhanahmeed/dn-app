@@ -152,14 +152,30 @@ nav a:hover, nav a:focus{
 }
 .display{
 	display: block;
+	z-index: 999999;
 }
 .toggleNav{
 	display: none;
 }
 
+.gbr img{
+	height: 50px;
+	color: white;
+}
+li.gbr{
+	padding: 0;
+}
+
 @media screen and (max-width: 540px){
+	.form-outter form{
+	width: auto;
+	margin: auto;
+}
 	.gbr{
 		display: none;
+	}
+	li.gbr{
+		padding: 10px;
 	}
 	.resposive ul{
 		display: list-item;
@@ -201,6 +217,9 @@ nav a:hover, nav a:focus{
 	}
 	.open_res{
 		left: 0;
+	}
+	.onhidden{
+		display: none;
 	}
 }
 
@@ -407,5 +426,29 @@ h1, h2, h3, h4, h5, p, a, label,span, input,small, strong,td,th,button{
 	}
 	.a234{
 		display: none;
+	}
+	.angin{
+		padding: 0;
+	}
+}
+@media screen and (min-width: 545px){
+	.angin{
+		padding: 20px 50px;
+	}
+}
+@media screen and (max-width: 770px){
+	.angin{
+		padding: 20px 50px;
+	}
+}
+@media screen and (max-width: 540px){
+
+	.angin{
+		padding: 0;
+	}
+}
+@media screen and (max-width: 5200px){
+	.angin{
+		padding: 20% 50px;
 	}
 }
