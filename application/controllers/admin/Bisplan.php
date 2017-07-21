@@ -54,6 +54,12 @@ class Bisplan extends CI_Controller {
 				}
 	}
 
+	public function export_excel(){
+		$data = array( 'title' => 'Daftar Peserta Bisplan',
+								 'bisplan' => $this->Admin_model->get_table('bisplan_db'));
+		$this->load->view('admin/bisplan/bisplan_excel',$data);
+	}
+
 	public function editBisplan($id){
 		if($this->session->userdata('akses'))
     {

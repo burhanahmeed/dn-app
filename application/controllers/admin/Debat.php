@@ -54,6 +54,12 @@ class Debat extends CI_Controller {
 				}
 	}
 
+	public function export_excel(){
+		$data = array( 'title' => 'Daftar Peserta Debat',
+								 'debat' => $this->Admin_model->get_table('debat_db'));
+		$this->load->view('admin/debat/debat_excel',$data);
+	}
+
 	public function editDebat($id){
 		if($this->session->userdata('akses'))
     {

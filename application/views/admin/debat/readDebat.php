@@ -17,7 +17,7 @@
                              Daftar Peserta Lomba Debat
                         </div> <br>
                         <div class="col-sm-6">
-                          <a href="" class="btn btn btn-primary btn-sm button-gray"> Download EXCEL </a>
+                          <a href="<?php echo base_url('admin/debat/export_excel') ?>" class="btn btn btn-primary btn-sm button-gray"> Download EXCEL </a>
                         </div> <br> <br>
                         <div class="panel-body">
                             <div class="table-responsive">

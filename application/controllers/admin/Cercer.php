@@ -54,6 +54,12 @@ class Cercer extends CI_Controller {
 				}
 	}
 
+	public function export_excel(){
+		$data = array( 'title' => 'Daftar Peserta Cerdas Cermat',
+								 'cercer' => $this->Admin_model->get_table('cercer_db'));
+		$this->load->view('admin/cercer/cercer_excel',$data);
+	}
+
 	public function editCercer($id){
 		if($this->session->userdata('akses'))
     {

@@ -42,6 +42,12 @@ class User extends CI_Controller {
 				}
 	}
 
+	public function export_excel(){
+ 		$data = array( 'title' => 'Daftar User Diesnat35',
+ 								 'user' => $this->Admin_model->get_table('user'));
+ 		$this->load->view('admin/user/user_excel',$data);
+ 	}
+
 	public function hapusUser($id){
 		if($this->session->userdata('akses'))
 		{
