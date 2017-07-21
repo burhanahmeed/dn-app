@@ -25,6 +25,12 @@ class Admin_model extends CI_Model
 		    return $this->db->get($table)->result_array();
 	  }
 
+    public function get_data_id($table, $id)
+    {
+      $query = $this->db->get_where($table, array('uid' => $id));
+      return $query->row_array();
+    }
+
     public function insert($tablename, $where)
 	  {
 		    return $this->db->insert($tablename, $where);

@@ -88,13 +88,13 @@
                         <a href="#"><i class="fa fa-files-o fa-fw"></i> List Pendaftar<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="<?php echo base_url()?>admin/produk">Debat</a>
+                                <a href="<?php echo base_url()?>admin/Bisplan">Bisplan</a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url()?>admin/produk/createView">Bisplan</a>
+                                <a href="<?php echo base_url()?>admin/Debat">Debat</a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url()?>admin/produk/createView">Cerdas Cermat</a>
+                                <a href="<?php echo base_url()?>admin/Cercer">Cerdas Cermat</a>
                             </li>
                         </ul>
                         <!-- second-level-items -->

@@ -14,7 +14,7 @@
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                             Tabel User
+                             Daftar Peserta Lomba Bisplan
                         </div> <br>
                         <div class="col-sm-6">
                           <a href="" class="btn btn btn-primary btn-sm button-gray"> Download EXCEL </a>
@@ -25,23 +25,27 @@
                                     <thead>
                                         <tr>
                                             <th>Id</th>
-                                            <th>Username</th>
-                                            <th>Debat</th>
-                                            <th>Bisplan</th>
-                                            <th>Cercer</th>
+                                            <th>Nama Tim</th>
+                                            <th>Asal Instansi</th>
+                                            <th>Nama Ketua</th>
+                                            <th>Status</th>
+                                            <th>Semifinal</th>
+                                            <th>Kontak</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($user as $row) { ?>
+                                        <?php foreach ($bisplan as $row) { ?>
                                         <tr>
-                                            <td><?php echo $row['id'] ?></td>
-                                            <td><?php echo $row['email'] ?></td>
-                                            <td><?php echo $row['debat'] ?></td>
-                                            <td><?php echo $row['bisplan'] ?></td>
-                                            <td><?php echo $row['cercer'] ?></td>
-                                            <td><?php echo '<a href="'.base_url().'admin/user/hapusUser/'.$row['id'].'"
-                                            role="button" class="btn btn-danger">Hapus</a>'; ?></td>
+                                            <td><?php echo $row['uid'] ?></td>
+                                            <td><?php echo $row['nama_tim'] ?></td>
+                                            <td><?php echo $row['asal_univ'] ?></td>
+                                            <td><?php echo $row['ketua'] ?></td>
+                                            <td><?php echo $row['status'] ?></td>
+                                            <td><?php echo $row['semifinal'] ?></td>
+                                            <td><?php echo $row['kontak'] ?></td>
+                                            <td><?php echo '<a href="'.base_url().'admin/bisplan/editView/'.$row['uid'].'"
+                                            role="button" class="btn btn-warning">Edit</a>'; ?></td>
                                         </tr>
                                         <?php } ?>
                                     </tbody>
