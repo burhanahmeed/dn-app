@@ -60,6 +60,14 @@ class Debat extends CI_Controller {
 		$this->load->view('admin/debat/debat_excel',$data);
 	}
 
+	public function download_data($id){
+		force_download('./uploads/debat/'.$id, null);
+	}
+
+	public function download_bayar($id){
+		force_download('./uploads/debat/'.$id, null);
+	}
+
 	public function editDebat($id){
 		if($this->session->userdata('akses'))
     {

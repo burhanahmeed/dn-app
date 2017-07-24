@@ -73,10 +73,9 @@
                                   </div>
                                   <div class="panel-body">
                                       <p> <?php echo $edit['verifikasi']?> </p>
-                                      <!-- <img src="<?php echo base_url().$edit['verifikasi']?>" width="255px" height="255px"> -->
                                   </div>
                                   <div class="panel-footer">
-                                    <button class="btn btn-primary">Download</button>
+                                    <?php echo '<td>'.anchor('admin/debat/download_data/'.$edit['verifikasi'], 'Download').'</td>'; ?>
                                   </div>
                               </div>
                               <div class="panel panel-primary">
@@ -85,10 +84,9 @@
                                   </div>
                                   <div class="panel-body">
                                       <p> <?php echo $edit['pembayaran']?> </p>
-                                      <!-- <img src="<?php echo base_url().$edit['pembayaran']?>" width="255px" height="255px"> -->
                                   </div>
                                   <div class="panel-footer">
-                                    <button class="btn btn-primary">Download</button>
+                                    <?php echo '<td>'.anchor('admin/debat/download_bayar/'.$edit['pembayaran'], 'Download').'</td>'; ?>
                                   </div>
                               </div>
                                 <button type="submit" name="submit" class="btn btn-primary">Submit Button</button>
