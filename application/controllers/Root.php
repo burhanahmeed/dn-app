@@ -34,12 +34,14 @@ class Root extends CI_Controller {
 		$bp = $get_sess[0]->bisplan;
 		$db = $get_sess[0]->debat;
 		$cc = $get_sess[0]->cercer;
+		$ann = $this->Competisi_model->getAnn('umum');
 		$data = array(
 			'title'=> 'Dashboard DN35');
 		$dataIsi = array(
 			'bp'=>$bp,
 			'db'=>$db,
-			'cc'=>$cc);
+			'cc'=>$cc,
+			'announce'=>$ann);
 		if ($bp==1 && $db==0 && $cc==0) {
 			$fields = 'bisplan_db.id, bisplan_db.uid, nama_tim, asal_univ, ketua, nim_ketua, anggota1, nim_a1, anggota2, nim_a2, status.status';
 			$bisplan = $this->Competisi_model->getTim('bisplan_db',$lid,$fields);
@@ -117,7 +119,10 @@ class Root extends CI_Controller {
 		$this->load->view('peserta/header',$data);
 		switch ($param) {
 			case 'bisplan':
-			if ($bp==1) {
+			if (strtotime(date('Y-m-d H:i:s'))>strtotime(date('2017-10-20 23:00:00'))) {
+			redirect('dashboard');
+			}
+			if ($bp==1||$cc==1) {
 				redirect('competition');
 			}else{
 				$dataIsi = array(
@@ -130,20 +135,34 @@ class Root extends CI_Controller {
 				break;
 			
 			case 'debat':
+			if (strtotime(date('Y-m-d H:i:s'))>strtotime(date('2017-10-20 23:00:00'))) {
+			redirect('dashboard');
+			}
+			if ($db==1||$cc==1) {
+				redirect('competition');
+			}else{
 				$dataIsi = array(
 					'judul'=>'Debate Competition',
 					'sekolah'=>'Kampus',
 					'no'=>'NIM',
 					'url'=>base_url().'Comp/register_debat');
 				$this->load->view('peserta/daftar',$dataIsi);
+			}
 				break;
 			case 'cercer':
+			if (strtotime(date('Y-m-d H:i:s'))>strtotime(date('2017-11-05 23:00:00'))) {
+			redirect('dashboard');
+			}
+			if ($cc==1&&$bp==1||$db==1) {
+				redirect('competition');
+			}else{
 				$dataIsi = array(
 					'judul'=>'Cerdas Cermat Competition',
 					'sekolah'=>'Sekolah',
 					'no'=>'No Induk',
 					'url'=>base_url().'Comp/register_cercer');
 				$this->load->view('peserta/daftar',$dataIsi);
+			}
 				break;
 		}
 		$this->load->view('peserta/footer');

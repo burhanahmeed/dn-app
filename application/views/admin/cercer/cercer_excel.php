@@ -1,6 +1,6 @@
 <?php
 header("Content-type: application/octet-stream");
-header("Content-Disposition: attachment; filename=$title.xls");
+header("Content-Disposition: attachment; filename=cerdas_cermat.xls");
 header("Pragma: no-cache");
 header("Expires: 0");
 ?>
@@ -8,6 +8,7 @@ header("Expires: 0");
 <thead>
 <tr>
  <th>No</th>
+ <th>Kode Tim</th>
  <th>Nama Tim</th>
  <th>Asal Instansi</th>
  <th>Nama Ketua</th>
@@ -24,6 +25,7 @@ header("Expires: 0");
 <?php $i=1; foreach($cercer as $row) { ?>
 <tr>
  <td><?php echo $i ?>
+ <td><?php echo $row['id'] ?></td>
  <td><?php echo $row['nama_tim'] ?></td>
  <td><?php echo $row['asal_univ'] ?></td>
  <td><?php echo $row['ketua'] ?></td>

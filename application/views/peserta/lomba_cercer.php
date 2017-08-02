@@ -1,3 +1,7 @@
+<?php 
+	$dl = date('2017-11-05 23:59:00');
+	$semis = date('2017-08-28 12:20:00');
+?>
 <div class="dett">
 	<div class="col-md-12 col-sm-12">
 		<div class="container">
@@ -124,9 +128,13 @@
 						<div class="form-group">
 							<input type="file" name="datadiri" required="">
 						</div>
+					<?php if (strtotime(date('Y-m-d H:i:s'))>strtotime($dl)) {?>
+						<p style="color: red;font-weight: bold;">Batas upload sudah terlewati</p>
+					<?php }else{?>
 						<div class="form-group">
 							<button class="btn dn-btn-white">Upload</button>
 						</div>
+					<?php }?>
 					</form>
 				</div>
 				<div class="upp">
@@ -142,9 +150,13 @@
 						<div class="form-group">
 							<input required="" type="file" name="bayar">
 						</div>
+					<?php if (strtotime(date('Y-m-d H:i:s'))>strtotime($dl)) {?>
+						<p style="color: red;font-weight: bold;">Batas upload sudah terlewati</p>
+					<?php }else{?>
 						<div class="form-group">
 							<button class="btn dn-btn-white">Upload</button>
 						</div>
+					<?php }?>
 					</form>
 				</div>
 			</div>

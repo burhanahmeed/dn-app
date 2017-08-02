@@ -328,6 +328,7 @@ li.gbr{
 	background-color: white;
 	border-radius: 100%;
 	margin: 5%;
+	width: 70px;
 }
 .dn-btn-white{
 	background-color: transparent;
@@ -393,6 +394,9 @@ h1, h2, h3, h4, h5, p, a, label,span, input,small, strong,td,th,button{
 	}
 	.res{
 		margin-left: -20px;
+	}
+	.hg{
+		height: auto;
 	}
 }
 @media screen and (max-width: 440px){

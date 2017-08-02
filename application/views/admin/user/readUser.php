@@ -37,9 +37,15 @@
                                         <tr>
                                             <td><?php echo $row['id'] ?></td>
                                             <td><?php echo $row['email'] ?></td>
-                                            <td><?php echo $row['debat'] ?></td>
-                                            <td><?php echo $row['bisplan'] ?></td>
-                                            <td><?php echo $row['cercer'] ?></td>
+                                            <td><?php if ($row['debat']=='1') {
+                                                echo 'Ya';
+                                            }else{echo 'Tidak'; }?></td>
+                                            <td><?php if ($row['bisplan']=='1') {
+                                                echo 'Ya';
+                                            }else{echo 'Tidak'; }?></td>
+                                            <td><?php if ($row['cercer']=='1') {
+                                                echo 'Ya';
+                                            }else{echo 'Tidak'; }?></td>
                                             <td><?php echo '<a href="'.base_url().'admin/user/hapusUser/'.$row['id'].'"
                                             role="button" class="btn btn-danger">Hapus</a>'; ?></td>
                                         </tr>

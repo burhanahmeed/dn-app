@@ -19,12 +19,20 @@
                         <div class="col-sm-6">
                           <a href="<?php echo base_url('admin/debat/export_excel') ?>" class="btn btn btn-primary btn-sm button-gray"> Download EXCEL </a>
                         </div> <br> <br>
+                          <span>Keterangan status</span>
+                        <ol>
+                            <li>Belum bayar dan belum terverivikasi = 1</li>
+                            <li>Belum bayar dan sudah terverivikasi = 2</li>
+                            <li>Sudah bayar dan belum terverivikasi = 3</li>
+                            <li>Sudah bayar dan sudah terverivikasi = 4</li>
+                        </ol>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-user">
+                                <table class="table table-striped table-bordered table-hover" id="table">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
+                                           <th>#</th>
+                                            <th>Kode Tim</th>
                                             <th>Nama Tim</th>
                                             <th>Asal Instansi</th>
                                             <th>Nama Ketua</th>
@@ -34,9 +42,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($debat as $row) { ?>
+                                        <?php $i=0; foreach ($debat as $row) { $i++;?>
                                         <tr>
-                                            <td><?php echo $row['uid'] ?></td>
+                                            <td><?php echo $i ?></td>
+                                            <td><?php echo $row['id'] ?></td>
                                             <td><?php echo $row['nama_tim'] ?></td>
                                             <td><?php echo $row['asal_univ'] ?></td>
                                             <td><?php echo $row['ketua'] ?></td>

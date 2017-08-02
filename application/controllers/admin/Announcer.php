@@ -22,14 +22,14 @@ class Announcer extends CI_Controller {
    public function __construct() {
    parent::__construct();
        $this->load->model('Admin_model');
-			 if($this->session->userdata('type') != 'admin'){
+			 if(empty($this->session->userdata('admLogin'))){
 				 redirect('admin/dashboard');
 			 }
   }
 
 	public function index()
 	{
-		if($this->session->userdata('akses'))
+		if(!empty($this->session->userdata('admLogin')))
 				{
 					//$data['pesan'] = $this->Model_pesan->gettable_sort("pesan", "id_pesan");
 					$data['announcer'] = $this->Admin_model->get_table('announcer');
@@ -43,7 +43,7 @@ class Announcer extends CI_Controller {
 	}
 
 	public function createView(){
-		if($this->session->userdata('akses'))
+		if(!empty($this->session->userdata('admLogin')))
 				{
 					$this->load->view('admin/header');
 					$this->load->view('admin/announcer/createAnnouncer');
@@ -55,7 +55,7 @@ class Announcer extends CI_Controller {
 	}
 
 	public function createAnnouncer(){
-		if($this->session->userdata('akses'))
+		if(!empty($this->session->userdata('admLogin')))
     {
 				$data = array(
 					'JENIS'=> $this->input->post('jenis'),
@@ -85,7 +85,7 @@ class Announcer extends CI_Controller {
 	}
 
 	public function hapusAnnouncer($id){
-		if($this->session->userdata('akses'))
+		if(!empty($this->session->userdata('admLogin')))
 		{
 			$this->Admin_model->delete_data('announcer', $id);
 			redirect('admin/announcer');

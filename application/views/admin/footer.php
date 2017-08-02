@@ -1,6 +1,8 @@
 
+
+</body>
     <!-- Core Scripts - Include with every page -->
-    <script src="<?php echo base_url()?>assets/plugins/jquery-1.10.2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="<?php echo base_url()?>assets/plugins/bootstrap/bootstrap.min.js"></script>
     <script src="<?php echo base_url()?>assets/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="<?php echo base_url()?>assets/plugins/pace/pace.js"></script>
@@ -15,13 +17,10 @@
     <script src="<?php echo base_url()?>assets/plugins/flot/jquery.flot.pie.js"></script>
     <script src="<?php echo base_url()?>assets/scripts/flot-demo.js"></script>
     <script src="<?php echo base_url()?>assets/scripts/morris-demo.js"></script>
-    <script src="<?php echo base_url()?>assets/plugins/dataTables/jquery.dataTables.js"></script>
-    <script src="<?php echo base_url()?>assets/plugins/dataTables/dataTables.bootstrap.js"></script>
+<script src="<?php echo base_url()?>assets/js/dataTables.js"></script>
+<script src="<?php echo base_url()?>assets/js/jquery.twbsPagination.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.15/js/dataTables.bootstrap.js"></script>
     <script>
-    $(document).ready(function () {
-        $('#dataTables-user').dataTable();
-    });
+            $('#table').DataTable();
     </script>
-</body>
-
 </html>

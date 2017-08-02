@@ -1,4 +1,5 @@
 <?php
+// require_once(dirname(__FILE__)."/EmailTemplate.php");
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Debat extends CI_Controller {
@@ -21,15 +22,16 @@ class Debat extends CI_Controller {
 
    public function __construct() {
    parent::__construct();
+    // $this->load->library('session');
        $this->load->model('Admin_model');
-			 if($this->session->userdata('type') != 'admin'){
+			 if(empty($this->session->userdata('admLogin'))){
 				 redirect('admin/dashboard');
 			 }
   }
 
 	public function index()
 	{
-		if($this->session->userdata('akses'))
+		if(!empty($this->session->userdata('admLogin')))
 				{
 					$this->load->view('admin/header');
 					$data['debat'] = $this->Admin_model->get_table('debat_db');
@@ -42,7 +44,7 @@ class Debat extends CI_Controller {
 	}
 
 	public function editView($id){
-		if($this->session->userdata('akses'))
+		if(!empty($this->session->userdata('admLogin')))
 				{
 					$this->load->view('admin/header');
 					$data['edit'] = $this->Admin_model->get_data_id('debat_db', $id);
@@ -69,7 +71,7 @@ class Debat extends CI_Controller {
 	}
 
 	public function editDebat($id){
-		if($this->session->userdata('akses'))
+		if(!empty($this->session->userdata('admLogin')))
     {
 				$data = array(
 					'NAMA_TIM'=> $this->input->post('nama_tim'),
@@ -87,15 +89,20 @@ class Debat extends CI_Controller {
 				if($query)
 				{
 					$this->session->set_flashdata('suksesdebat', '<div class="col-sm-12 alert alert-success fade in">
-													 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-													 Peserta Debat Berhasil Diupdate</div>');
+						 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						 Peserta Debat Berhasil Diupdate</div>');
+					   $this->load->library('sendmail');
+					if ($this->input->post('status')==4) {
+						$email_to = $this->Admin_model->getUserID('user',$id)['email'];
+						$this->sendmail->chgStatus($email_to,$this->input->post('nama_tim'));
+					}
 					redirect ('admin/debat');
 				}
 				else
 				{
 					$this->session->set_flashdata('gagaldebat', '<div class="col-sm-12 alert alert-danger fade in">
-													 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-													 Peserta Debat Gagal Diupdate</div>');
+						 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						 Peserta Debat Gagal Diupdate</div>');
 					redirect ('admin/debat/editDebat/$id');
 				}
 		} else

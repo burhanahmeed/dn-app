@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User extends CI_Controller {
+class Submission extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -27,36 +27,38 @@ class User extends CI_Controller {
 			 }
   }
 
-	public function index()
+	public function index($param="")
 	{
 		if(!empty($this->session->userdata('admLogin')))
 				{
-					//$data['pesan'] = $this->Model_pesan->gettable_sort("pesan", "id_pesan");
-					$data['user'] = $this->Admin_model->get_table('user');
+					if (empty($param)) {
+						$data['bisplan'] = $this->Admin_model->getSubmisiAll();
+						$data['sort'] = 'semua';
+					}else{
+						switch ($param) {
+							case 'bisplan':
+								$data['bisplan'] = $this->Admin_model->getSubmisi('bisplan');
+								$data['sort'] = 'bisplan';
+								break;
+							
+							case 'debat':
+								$data['bisplan'] = $this->Admin_model->getSubmisi('debat');
+								$data['sort'] = 'debat';
+								break;
+							case 'cercer':
+								$data['bisplan'] = $this->Admin_model->getSubmisi('cercer');
+								$data['sort'] = 'semua';
+								break;
+						}
+					}
 					$this->load->view('admin/header');
-					$this->load->view('admin/user/readUser', $data);
+					$this->load->view('admin/submisi', $data);
 					$this->load->view('admin/footer');
+					
 				}else
 				{
 						redirect('admin/dashboard');
 				}
-	}
-
-	public function export_excel(){
- 		$data = array( 'title' => 'Daftar User Diesnat35',
- 								 'user' => $this->Admin_model->get_table('user'));
- 		$this->load->view('admin/user/user_excel',$data);
- 	}
-
-	public function hapusUser($id){
-		if(!empty($this->session->userdata('admLogin')))
-		{
-			$this->Admin_model->delete_data('user', $id);
-			redirect('admin/user');
-		}else
-		{
-				redirect('admin/dashboard');
-		}
 	}
 
 }

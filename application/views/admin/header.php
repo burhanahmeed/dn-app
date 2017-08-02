@@ -15,6 +15,7 @@
     <link href="<?php echo base_url()?>assets/plugins/social-buttons/social-buttons.css" rel="stylesheet" />
     <link href="<?php echo base_url()?>assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
     <link href="<?php echo base_url()?>assets/plugins/timeline/timeline.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.15/css/dataTables.bootstrap.css">
 
    </head>
 <body>
@@ -111,9 +112,63 @@
                         </ul>
                         <!-- second-level-items -->
                     </li>
+                    <li>
+                        <a href="<?php echo base_url()?>admin/Submission"><i class="fa fa-files-o fa-fw"></i> Submission</a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#chgpass"><i class="fa fa-files-o fa-fw"></i> Change Password</a>
+                    </li>
                 </ul>
                 <!-- end side-menu -->
             </div>
-            <!-- end sidebar-collapse -->
+            <!-- end sidebar-collapse --> <!-- <?= var_dump($this->session->userdata('admLogin')) ?> -->
         </nav>
         <!-- end navbar side -->
+
+    <!--start change password -->
+    <!-- forgot pass Modal -->
+<div id="chgpass" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="margin-top: 104px;
+z-index: 9999;">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: green; color: white">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Change Password</h4>
+      </div>
+      <div class="modal-body row">
+
+        <form action="<?= base_url()?>admin/dashboard/changePassword" method="POST" style="width: 280px; margin: auto;">
+            <div class="form-group">
+                <input class="form-control dn-form-control" type="password" name="pass" placeholder="New Password">
+            </div>
+            <div class="form-group">
+                <input class="form-control dn-form-control" type="password" name="cpass" placeholder="Comfirm Password">
+            </div>
+            <div class="form-group" style="float: right;">
+                <input style="width: 70px" class="btn dn-btn-def" type="submit" name="" value="Save">
+            </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+    <!-- end here -->
+
+<!-- change pass notification -->
+<?php
+            if ($this->session->flashdata('errchg')) {
+                echo '<div class="alert alert-danger position alert-dismissable" style="position:fixed">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                          '.$this->session->flashdata('errchg').'
+                        </div>';
+            }elseif ($this->session->flashdata('succhg')) {
+                echo '<div class="alert alert-success position alert-dismissable" style="position:fixed">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                      '.$this->session->flashdata('succhg').'
+                    </div>';
+            }
+            ?>

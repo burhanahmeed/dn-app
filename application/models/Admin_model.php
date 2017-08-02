@@ -14,6 +14,7 @@ class Admin_model extends CI_Model
           $data['akses'] = TRUE;
           $data['username'] = $cek->row()->username;
           $data['type'] = 'admin';
+          $data['id'] = $cek->row()->id;
         } else
         {
           $data['akses'] = FALSE;
@@ -39,6 +40,32 @@ class Admin_model extends CI_Model
     public function delete_data($table, $id)
     {
       return $this->db->delete($table, array('id'=>$id));
+    }
+
+    function getSubmisi($kategori){
+      $query = $this->db->select('*')
+      ->where('jenis_event', $kategori)
+          ->from('file_upload')
+          ->order_by('timestamp', 'DESC')
+          ->get();
+      return $query->result_array();
+    }
+    function getSubmisiAll(){
+      $query = $this->db->select('*')
+          ->from('file_upload')
+          ->order_by('timestamp', 'DESC')
+          ->get();
+      return $query->result_array();
+    }
+
+    function updateDB($data, $dbName, $where){
+      $this->db->where($where);
+      $this->db->update($dbName ,$data);
+    }
+
+    function getUserID($table, $id){
+      $query = $this->db->get_where($table, array('id' => $id));
+      return $query->row_array();
     }
 
 }

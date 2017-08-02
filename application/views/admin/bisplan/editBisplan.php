@@ -61,17 +61,17 @@
                               <div class="form-group">
                                 <label for="status">Status:</label>
                                 <select name="status" class="form-control" id="status">
-                                  <option value="1">Belum Bayar dan Belum Terverifikasi</option>
-                                  <option value="2">Belum Bayar dan Sudah Terverifikasi</option>
-                                  <option value="3">Sudah Bayar dan Belum Terverifikasi</option>
-                                  <option value="4">Sudah Bayar dan Sudah Terverifikasi</option>
+                                  <option <?php echo ($edit['status']==1)?'selected':'';?> value="1">Belum Bayar dan Belum Terverifikasi</option>
+                                  <option <?php echo ($edit['status']==2)?'selected':'';?> value="2">Belum Bayar dan Sudah Terverifikasi</option>
+                                  <option <?php echo ($edit['status']==3)?'selected':'';?> value="3">Sudah Bayar dan Belum Terverifikasi</option>
+                                  <option <?php echo ($edit['status']==4)?'selected':'';?> value="4">Sudah Bayar dan Sudah Terverifikasi</option>
                                 </select>
                               </div>
                               <div class="form-group">
                                 <label for="semifinal">Semifinal:</label>
                                 <select name="semifinal" class="form-control" id="semifinal">
-                                  <option value="0">Tidak</option>
-                                  <option value="1">Ya</option>
+                                  <option <?php echo ($edit['semifinal']==0)?'selected':'';?> value="0">Tidak</option>
+                                  <option <?php echo ($edit['semifinal']==1)?'selected':'';?> value="1">Ya</option>
                                 </select>
                               </div>
                               <div class="panel panel-primary">

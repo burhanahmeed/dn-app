@@ -37,7 +37,7 @@
 					<input class="form-control dn-form-control" type="text" name="asal">
 				</div>
 				<div class="form-group">
-				<label>Kontak Ketua (No HP/LINE/WA)</label>
+				<label>Kontak Ketua (No HP/WA)</label>
 					<input class="form-control dn-form-control" type="text" name="kontak">
 				</div>
 				<div id="notifi"></div>

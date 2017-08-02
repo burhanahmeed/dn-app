@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Link</label>
-                                    <input class="form-control" name="link" placeholder="Hyperlink">
+                                    <input class="form-control" name="link" placeholder="Isinya pake http://">
                                 </div>
                         </div>
                             <div class="col-lg-6">

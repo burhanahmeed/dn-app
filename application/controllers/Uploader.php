@@ -177,6 +177,8 @@ class Uploader extends CI_Controller {
     			break;
     		
     		case 'debat':
+    		$getter = $this->Competisi_model->getTim('debat_db',$lid,'nama_tim');
+    		$nama_tim = $getter[0]->nama_tim;
     		$config['upload_path']   = './uploads/submit_debat/'; 
 	        $config['allowed_types'] = 'pdf'; 
 	        $config['max_size']      = 20000;

@@ -12,24 +12,36 @@
 <div class="ann col-md-12 col-sm-12">
 	<div class="container">
 		<h3>Announcements</h3>
-		<div class="table-responsive">
-			<table class="table table-bordered">
-			    <thead>
-			      <tr>
-			        <th>Date</th>
-			        <th>Information</th>
-			        <th>Link</th>
-			      </tr>
-			    </thead>
-			    <tbody>
-			      <tr>
-			        <td>22 jun 2013</td>
-			        <td>Rulebook Business Plan v1.0</td>
-			        <td><a href="">Download</a></td>
-			      </tr>
-			    </tbody>
-			  </table>
-		</div>
+ <?php if (empty($announce)) { ?>
+					    	<p>We don't have announcement. Stay tuned coz anything will be here</p>
+					    <?php }else{ ?>
+				<div class="table-responsive res">
+					<table class="table table-bordered">
+					    <thead>
+					      <tr>
+					        <th>Date</th>
+					        <th>Detail</th>
+					        <th>Link</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					    	<?php foreach ($announce as $a) { ?>
+					    	
+						    <tr>
+						        <td><?= date('F jS, Y H:i',strtotime($a->date)) ?></td>
+						        <td><?= $a->desk ?></td>
+						        <td><?php if ($a->link == null) {
+						        	
+						        }else{ ?>
+						        	<a href="<?= $a->link?>">Here</a>
+						        <?php } ?></td>
+						    </tr>
+
+					    	<?php } ?>
+					    </tbody>
+					</table>
+				</div>
+					    	<?php }?>
 	</div>
 </div>
 <div class="isi col-sm-12 col-md-12">

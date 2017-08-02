@@ -43,7 +43,8 @@
 	<!--start change password -->
 	<!-- forgot pass Modal -->
 <div id="chgpass" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+  <div class="modal-dialog" style="margin-top: 104px;
+z-index: 9999;">
 
     <!-- Modal content-->
     <div class="modal-content">
