@@ -67,5 +67,13 @@ class Admin_model extends CI_Model
       $query = $this->db->get_where($table, array('id' => $id));
       return $query->row_array();
     }
+    function sortby($where, $table, $orby){
+      $query = $this->db->select('*')
+      ->where($where)
+          ->from($table)
+          ->order_by($orby)
+          ->get();
+      return $query->result_array();
+    }
 
 }

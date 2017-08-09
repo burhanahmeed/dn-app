@@ -19,6 +19,11 @@
                         <div class="col-sm-6">
                           <a href="<?php echo base_url('admin/cercer/export_excel') ?>" class="btn btn btn-primary btn-sm button-gray"> Download EXCEL </a>
                         </div> <br> <br>
+                        <label>Sort By</label>
+                        <div class="form-group">
+                            <a href="<?php echo base_url('admin/cercer/sortby/verified') ?>" class="btn btn btn-primary btn-sm button-gray">Terverifikasi</a>
+                            <a href="<?php echo base_url('admin/cercer/sortby/unverified') ?>" class="btn btn btn-primary btn-sm button-gray">Belum Terverifikasi</a>
+                        </div>
 
                         <span>Keterangan status</span>
                         <ol>
@@ -33,6 +38,7 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
+                                            <th>ID User</th>
                                             <th>Kode Tim</th>
                                             <th>Nama Tim</th>
                                             <th>Asal Instansi</th>
@@ -44,10 +50,12 @@
                                     </thead>
                                     <tbody>
                                          <?php $i=0; foreach ($cercer as $row) { $i++; ?>
+                                         <?= ($row['status']!='4' && ($row['verifikasi']!=null || $row['pembayaran']!=null))? $css='style="background-color: #04b173;"': $css=''; ?>
                                         <tr>
                                             <td><?php echo $i ?></td>
-                                            <td><?php echo $row['id'] ?></td>
-                                            <td><?php echo $row['nama_tim'] ?></td>
+                                            <td <?=$css?> ><?php echo $row['uid'] ?></td>
+                                            <td <?=$css?> ><?php echo $row['id'] ?></td>
+                                            <td <?=$css?> ><?php echo $row['nama_tim'] ?></td>
                                             <td><?php echo $row['asal_univ'] ?></td>
                                             <td><?php echo $row['ketua'] ?></td>
                                             <td><?php echo $row['status'] ?></td>

@@ -78,7 +78,15 @@
 					<h4>Team : <?= $debat->nama_tim ; ?></h4>
 					<h5>Status : <?= $debat->status?></h5>
 				</div>
-			<?php } ?>
+			<?php }else{ echo '';} ?>
+			<?php 
+				if ($kof==1) {?>
+					<div class="comp-b cercer">
+					<p>Kompetisi Film Dokumenter</p>
+						<h4>Team : <?= $kofed->nama_tim ; ?></h4>
+						<h5>Nama Ketua : <?= $kofed->ketua ?></h5>
+					</div>
+			<?php }else{echo '';} ?>
 		</div>
 	</div>
 </div>

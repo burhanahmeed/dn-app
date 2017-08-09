@@ -34,6 +34,7 @@ class Root extends CI_Controller {
 		$bp = $get_sess[0]->bisplan;
 		$db = $get_sess[0]->debat;
 		$cc = $get_sess[0]->cercer;
+		$kof = $get_sess[0]->kofid;
 		$ann = $this->Competisi_model->getAnn('umum');
 		$data = array(
 			'title'=> 'Dashboard DN35');
@@ -41,6 +42,7 @@ class Root extends CI_Controller {
 			'bp'=>$bp,
 			'db'=>$db,
 			'cc'=>$cc,
+			'kof'=>$kof,
 			'announce'=>$ann);
 		if ($bp==1 && $db==0 && $cc==0) {
 			$fields = 'bisplan_db.id, bisplan_db.uid, nama_tim, asal_univ, ketua, nim_ketua, anggota1, nim_a1, anggota2, nim_a2, status.status';
@@ -63,12 +65,17 @@ class Root extends CI_Controller {
 			$cercer = $this->Competisi_model->getTim('cercer_db',$lid,$fields);
 			$dataIsi['cercer'] = $cercer[0];
 		}
+		if ($kof==1) {
+			$fields = 'kofid_db.id, kofid_db.uid, nama_tim, asal_univ, ketua, nim_ketua, status.status';
+			$kof = $this->Competisi_model->getTim('kofid_db',$lid,$fields);
+			$dataIsi['kofed'] = $kof[0];
+		}
 
 		if (!$this->session->userdata('login')) {
 			redirect('/');
 		}else{
 			$this->load->view('peserta/header',$data);
-			if ($bp==0 && $db==0 && $cc==0) {
+			if ($bp==0 && $db==0 && $cc==0&&$kof==0) {
 				$this->load->view('peserta/lomba',$dataIsi);
 			}else{
 				$this->load->view('peserta/dash',$dataIsi);
@@ -83,18 +90,20 @@ class Root extends CI_Controller {
 		$bp = $get_sess[0]->bisplan;
 		$db = $get_sess[0]->debat;
 		$cc = $get_sess[0]->cercer;
+		$kof = $get_sess[0]->kofid;
 		$data = array(
 			'title'=> 'Competition DN35');
 		$dataIsi = array(
 			'bp'=>$bp,
 			'db'=>$db,
-			'cc'=>$cc);
+			'cc'=>$cc,
+			'kof'=>$kof);
 
 		if (!$this->session->userdata('login')) {
 			redirect('/');
 		}else{
 			$this->load->view('peserta/header',$data);
-			if ($bp==0 && $db==0 && $cc==0) {
+			if ($bp==0 && $db==0 && $cc==0 && $kof==0) {
 				$this->load->view('peserta/lomba');
 			}else{
 				$this->load->view('peserta/lomba-reg',$dataIsi);
@@ -109,6 +118,7 @@ class Root extends CI_Controller {
 		$bp = $get_sess[0]->bisplan;
 		$db = $get_sess[0]->debat;
 		$cc = $get_sess[0]->cercer;
+		$kof = $get_sess[0]->kofid;
 		if (!$this->session->userdata('login')) {
 			redirect('/');
 		}
@@ -162,6 +172,22 @@ class Root extends CI_Controller {
 					'no'=>'No Induk',
 					'url'=>base_url().'Comp/register_cercer');
 				$this->load->view('peserta/daftar',$dataIsi);
+			}
+				break;
+
+			case 'kofid':
+			if (strtotime(date('Y-m-d H:i:s'))>strtotime(date('2017-11-05 23:00:00'))) {
+			redirect('dashboard');
+			}
+			if ($kof==1) {
+				redirect('competition');
+			}else{
+				$dataIsi = array(
+					'judul'=>'Kompetisi Film Dokumenter',
+					'sekolah'=>'Sekolah/Instansi',
+					'no'=>'No Induk',
+					'url'=>base_url().'Comp/register_kofid');
+				$this->load->view('peserta/daftarkofid',$dataIsi);
 			}
 				break;
 		}
@@ -220,6 +246,20 @@ class Root extends CI_Controller {
 				$this->load->view('peserta/header',$data);
 				$this->load->view('peserta/lomba_cercer',$dataIsi);
 				break;
+
+			case 'kofid':
+				$fields = 'kofid_db.id, kofid_db.uid, nama_tim, asal_univ, ketua, nim_ketua, status.status,kontak,kofid_db.status AS st, alamat, deskripsi, submission';
+				$bisplan = $this->Competisi_model->getTim('kofid_db',$lid,$fields);
+				// $get_latest_file = $this->Competisi_model->getLatestFile($bisplan[0]->id,'cercer');
+				$data = array(
+					'title'=> 'DN35 Kompetisi Film Dokumenter');
+				$dataIsi = array(
+					'bisplan'=>$bisplan[0]
+					);
+				$this->load->view('peserta/header',$data);
+				$this->load->view('peserta/lomba_kofid',$dataIsi);
+				break;
+
 		}
 		$this->load->view('peserta/footer');
 	}

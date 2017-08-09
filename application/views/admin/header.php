@@ -97,6 +97,9 @@
                             <li>
                                 <a href="<?php echo base_url()?>admin/Cercer">Cerdas Cermat</a>
                             </li>
+                            <li>
+                                <a href="<?php echo base_url()?>admin/Kofid">KOFID</a>
+                            </li>
                         </ul>
                         <!-- second-level-items -->
                     </li>

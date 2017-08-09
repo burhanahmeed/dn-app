@@ -41,6 +41,24 @@ class Bisplan extends CI_Controller {
 				}
 	}
 
+	function sortby($verify){
+		switch ($verify) {
+			case 'verified':
+				$this->load->view('admin/header');
+				$data['bisplan'] = $this->Admin_model->sortby(array('status'=>4),'bisplan_db', 'uid DESC');
+				$this->load->view('admin/bisplan/readBisplan', $data);
+				$this->load->view('admin/footer');
+				break;
+			
+			case 'unverified':
+				$this->load->view('admin/header');
+				$data['bisplan'] = $this->Admin_model->sortby(array('status !='=>'4'),'bisplan_db', 'uid DESC');
+				$this->load->view('admin/bisplan/readBisplan', $data);
+				$this->load->view('admin/footer');
+				break;
+		}
+	}
+
 	public function editView($id){
 		if(!empty($this->session->userdata('admLogin')))
 				{
@@ -62,6 +80,7 @@ class Bisplan extends CI_Controller {
 
 	public function download_data($id){
 		force_download('./uploads/bisplan/'.$id, null);
+		// redirect(base_url().'uploads/bisplan/'.$id);
 	}
 
 	public function download_bayar($id){

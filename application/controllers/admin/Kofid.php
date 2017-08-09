@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Cercer extends CI_Controller {
+class Kofid extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -32,8 +32,8 @@ class Cercer extends CI_Controller {
 		if(!empty($this->session->userdata('admLogin')))
 				{
 					$this->load->view('admin/header');
-					$data['cercer'] = $this->Admin_model->get_table('cercer_db');
-					$this->load->view('admin/cercer/readCercer', $data);
+					$data['kofid'] = $this->Admin_model->get_table('kofid_db');
+					$this->load->view('admin/kofid/readKofid', $data);
 					$this->load->view('admin/footer');
 				}else
 				{
@@ -45,15 +45,15 @@ class Cercer extends CI_Controller {
 		switch ($verify) {
 			case 'verified':
 				$this->load->view('admin/header');
-				$data['cercer'] = $this->Admin_model->sortby(array('status'=>'4'),'cercer_db', 'uid DESC');
-				$this->load->view('admin/cercer/readCercer', $data);
+				$data['cercer'] = $this->Admin_model->sortby(array('status'=>'4'),'kofid_db', 'uid DESC');
+				$this->load->view('admin/kofid/readKofid', $data);
 				$this->load->view('admin/footer');
 				break;
 			
 			case 'unverified':
 				$this->load->view('admin/header');
-				$data['cercer'] = $this->Admin_model->sortby(array('status !='=>'4'),'cercer_db', 'uid DESC');
-				$this->load->view('admin/cercer/readCercer', $data);
+				$data['cercer'] = $this->Admin_model->sortby(array('status !='=>'4'),'kofid_db', 'uid DESC');
+				$this->load->view('admin/kofid/readCercer', $data);
 				$this->load->view('admin/footer');
 				break;
 		}
@@ -73,9 +73,9 @@ class Cercer extends CI_Controller {
 	}
 
 	public function export_excel(){
-		$data = array( 'title' => 'Daftar Peserta Cerdas Cermat',
-								 'cercer' => $this->Admin_model->get_table('cercer_db'));
-		$this->load->view('admin/cercer/cercer_excel',$data);
+		$data = array( 'title' => 'Daftar Peserta Film Dokumenter',
+								 'kofid' => $this->Admin_model->get_table('kofid_db'));
+		$this->load->view('admin/kofid/kofid_excel',$data);
 	}
 
 	public function download_data($id){

@@ -43,6 +43,24 @@ class Debat extends CI_Controller {
 				}
 	}
 
+		function sortby($verify){
+		switch ($verify) {
+			case 'verified':
+				$this->load->view('admin/header');
+				$data['debat'] = $this->Admin_model->sortby(array('status'=>4),'debat_db', 'uid DESC');
+				$this->load->view('admin/debat/readDebat', $data);
+				$this->load->view('admin/footer');
+				break;
+			
+			case 'unverified':
+				$this->load->view('admin/header');
+				$data['debat'] = $this->Admin_model->sortby(array('status !='=>'4'),'debat_db', 'uid DESC');
+				$this->load->view('admin/debat/readDebat', $data);
+				$this->load->view('admin/footer');
+				break;
+		}
+	}
+
 	public function editView($id){
 		if(!empty($this->session->userdata('admLogin')))
 				{

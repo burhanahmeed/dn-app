@@ -145,7 +145,8 @@ class Uploader extends CI_Controller {
     	}
     }
     function submission($param, $code){
-    	$lid = $this->session->userdata('login')['id'];
+    	$lid = $this->session->userdata('login')['id']; 
+    	// mengambil ID user bukan ID peserta lomba
 
     	switch ($param) {
     		case 'bisplan':
@@ -227,6 +228,24 @@ class Uploader extends CI_Controller {
 	           $this->Competisi_model->insert_submit($data);
 	           redirect('competition/cercer') ;
 	        } 
+    			break;
+
+    		case 'kofid':
+    		$this->form_validation->set_rules('link','Link Video','required');
+    		$this->form_validation->set_rules('desk','Deskripsi','required');
+			$this->form_validation->set_message('required','%s cannot be empty');
+    			$link = $this->input->post('link');
+    			$desk = $this->input->post('desk');
+    			$submit = array(
+    				'submission'=>$link,
+    				'deskripsi'=>$desk);
+    			if ($this->form_validation->run()) {
+    				$this->session->set_flashdata('succUp', 'Link Submitted'); 
+    				$this->Competisi_model->updateLomba($submit, 'kofid_db',array('id'=>$code));
+    			}else{
+    				$this->session->set_flashdata('errUp', validation_errors()); 
+    			}
+    			redirect('competition/kofid') ;
     			break;
     	}
     }

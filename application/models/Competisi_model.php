@@ -76,6 +76,10 @@ class Competisi_model extends CI_Model {
                         ->order_by('date','DESC');
                 return $this->db->get()->result();
         }
+        function updateLomba($data, $table, $where){
+                $this->db->where($where);
+                $this->db->update($table,$data);
+        }
 }
 
 ?>

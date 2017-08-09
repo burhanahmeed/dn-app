@@ -8,6 +8,7 @@ header("Expires: 0");
 <thead>
 <tr>
  <th>No</th>
+ <th>ID User</th>
  <th>Kode Tim</th>
  <th>Nama Tim</th>
  <th>Asal Instansi</th>
@@ -26,6 +27,7 @@ header("Expires: 0");
 <tr>
  <td><?php echo $i ?>
  <td><?php echo $row['id'] ?></td>
+  <td><?php echo $row['uid'] ?></td>
  <td><?php echo $row['nama_tim'] ?></td>
  <td><?php echo $row['asal_univ'] ?></td>
  <td><?php echo $row['ketua'] ?></td>
